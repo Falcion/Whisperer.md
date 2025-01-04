@@ -1,0 +1,371 @@
+{
+  "repository": {
+    "name": "Patternugit",
+    "description": "Preconfigured pattern for your repository with universal cases for markdown files of documentations and other actions/scripts",
+    "homepage": "",
+    "topics": [
+      "github",
+      "template",
+      "documentation",
+      "repository",
+      "template-project",
+      "documentations",
+      "repository-template",
+      "github-template",
+      "template-repository",
+      "workflows-to-access",
+      "workflows-reusable"
+    ],
+    "private": false,
+    "has_issues": true,
+    "has_projects": true,
+    "has_wiki": false,
+    "has_downloads": true,
+    "default_branch": "main",
+    "allow_squash_merge": true,
+    "allow_merge_commit": true,
+    "allow_rebase_merge": true,
+    "delete_branch_on_merge": true,
+    "enable_automated_security_fixes": true,
+    "enable_vulnerability_alerts": true
+  },
+  "branches": [
+    {
+      "name": "main",
+      "protection": {
+        "required_pull_request_reviews": {
+          "required_approving_review_count": 1,
+          "dismiss_stale_reviews": true,
+          "require_code_owner_reviews": true,
+          "dismissal_restrictions": {
+            "users": [],
+            "teams": []
+          }
+        },
+        "required_status_checks": {
+          "strict": true,
+          "contexts": []
+        },
+        "enforce_admins": true,
+        "required_linear_history": true,
+        "restrictions": {
+          "apps": [],
+          "users": [],
+          "teams": []
+        }
+      }
+    },
+    {
+      "name": "development",
+      "protection": {
+        "required_pull_request_reviews": {
+          "required_approving_review_count": 0,
+          "dismiss_stale_reviews": false,
+          "require_code_owner_reviews": false,
+          "dismissal_restrictions": {
+            "users": [],
+            "teams": []
+          }
+        },
+        "required_status_checks": {
+          "strict": true,
+          "contexts": []
+        },
+        "enforce_admins": false,
+        "required_linear_history": false,
+        "restrictions": {
+          "apps": [],
+          "users": [],
+          "teams": []
+        }
+      }
+    },
+    {
+      "name": "development-ref",
+      "protection": {
+        "required_pull_request_reviews": {
+          "required_approving_review_count": 0,
+          "dismiss_stale_reviews": true,
+          "require_code_owner_reviews": true,
+          "dismissal_restrictions": {
+            "users": [],
+            "teams": []
+          }
+        },
+        "required_status_checks": {
+          "strict": true,
+          "contexts": []
+        },
+        "enforce_admins": false,
+        "required_linear_history": true,
+        "restrictions": {
+          "apps": [],
+          "users": [],
+          "teams": []
+        }
+      }
+    }
+  ],
+  "collaborators": [
+    {
+      "username": "octokat",
+      "permission": "admin"
+    }
+  ],
+  "teams": [
+    {
+      "name": "core",
+      "permission": "admin"
+    },
+    {
+      "name": "docs",
+      "permission": "push"
+    },
+    {
+      "name": "readers",
+      "permission": "pull"
+    },
+    {
+      "name": "triager",
+      "permission": "triage"
+    }
+  ],
+  "environments": [
+    {
+      "name": "production",
+      "wait_timer": 5,
+      "reviewers": [
+        {
+          "id": 1,
+          "type": "Team"
+        },
+        {
+          "id": 2,
+          "type": "User"
+        }
+      ],
+      "deployment_branch_policy": {
+        "protected_branches": true
+      }
+    },
+    {
+      "name": "development",
+      "deployment_branch_policy": {
+        "custom_branches": [
+          "main",
+          {
+            "name": "dev/*",
+            "type": "branch"
+          },
+          {
+            "name": "release/*",
+            "type": "branch"
+          },
+          {
+            "name": "v*",
+            "type": "tag"
+          }
+        ]
+      }
+    }
+  ],
+  "milestones": [
+    {
+      "title": "",
+      "description": "",
+      "state": "closed"
+    }
+  ],
+  "labels": [
+    {
+      "name": "announcement",
+      "color": "#0075ca"
+    },
+    {
+      "name": "api-review/approved",
+      "color": "#d73a4a"
+    },
+    {
+      "name": "api-review/declined",
+      "color": "#d73a4a"
+    },
+    {
+      "name": "api-review/requested",
+      "color": "#d73a4a"
+    },
+    {
+      "name": "api-review/reviewed",
+      "color": "#d73a4a"
+    },
+    {
+      "name": "arch/arm",
+      "color": "#cfd3d7"
+    },
+    {
+      "name": "arch/arm64",
+      "color": "#cfd3d7"
+    },
+    {
+      "name": "arch/x64",
+      "color": "#cfd3d7"
+    },
+    {
+      "name": "arch/x86",
+      "color": "#cfd3d7"
+    },
+    {
+      "name": "backport/approved",
+      "color": "#d876e3"
+    },
+    {
+      "name": "backport/declined",
+      "color": "#d876e3"
+    },
+    {
+      "name": "backport/requested",
+      "color": "#d876e3"
+    },
+    {
+      "name": "backport",
+      "color": "#b9927c",
+      "description": "Issue or pull request related to backport"
+    },
+    {
+      "name": "blocked/need-info",
+      "color": "#b60205",
+      "description": "Cannot proceed without more information"
+    },
+    {
+      "name": "blocked/need-repro",
+      "color": "#b60205",
+      "description": "Needs a test case to reproduce the bug"
+    },
+    {
+      "name": "blocked/upstream",
+      "color": "#b60205",
+      "description": "Blocked on upstream"
+    },
+    {
+      "name": "blocks-release",
+      "color": "#7057ff",
+      "description": "Releases shouldn't go out without this fix"
+    },
+    {
+      "name": "bug",
+      "color": "#e4e669"
+    },
+    {
+      "name": "crash",
+      "color": "#006b75"
+    },
+    {
+      "name": "dependencies",
+      "color": "#a3452c",
+      "description": "Pull requests that update a dependency file"
+    },
+    {
+      "name": "deprecation-review/complete",
+      "color": "#e22801"
+    },
+    {
+      "name": "deprecation-review/requested",
+      "color": "#e22801"
+    },
+    {
+      "name": "discussion",
+      "color": "#f463e9"
+    },
+    {
+      "name": "not-merging",
+      "color": "#a21855"
+    },
+    {
+      "name": "documentation",
+      "color": "#a2eeef"
+    },
+    {
+      "name": "duplicate",
+      "color": "#ffffff"
+    },
+    {
+      "name": "enhancement",
+      "color": "#008672"
+    },
+    {
+      "name": "has-repro-comment",
+      "color": "#71a111"
+    },
+    {
+      "name": "has-repro-gist",
+      "color": "#71a111"
+    },
+    {
+      "name": "has-repro-repo",
+      "color": "#71a111"
+    },
+    {
+      "name": "invalid",
+      "color": "#c3d22b"
+    },
+    {
+      "name": "machine-dependent",
+      "color": "#704c92"
+    },
+    {
+      "name": "machine",
+      "color": "#704c92"
+    },
+    {
+      "name": "main",
+      "color": "#659c0b"
+    },
+    {
+      "name": "security/memory",
+      "color": "#b160a1"
+    },
+    {
+      "name": "security/data",
+      "color": "#b160a1"
+    },
+    {
+      "name": "security/leak",
+      "color": "#b160a1"
+    },
+    {
+      "name": "no-backport",
+      "color": "#05263e"
+    },
+    {
+      "name": "performance",
+      "color": "#f7df40"
+    },
+    {
+      "name": "platform/all",
+      "color": "#b79ccd"
+    },
+    {
+      "name": "platform/linux",
+      "color": "#b79ccd"
+    },
+    {
+      "name": "platform/macos",
+      "color": "#b79ccd"
+    },
+    {
+      "name": "platform/windows",
+      "color": "#b79ccd"
+    },
+    {
+      "name": "release-blocker",
+      "color": "#eb2759"
+    },
+    {
+      "name": "question",
+      "color": "#d876e3"
+    },
+    {
+      "name": "release",
+      "color": "#eb2759"
+    }
+  ]
+}

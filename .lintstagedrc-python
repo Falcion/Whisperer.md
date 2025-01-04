@@ -1,0 +1,28 @@
+{
+  "*.{js,jsx}": [
+    "npx prettier --write '*.{js,jsx}'",
+    "npx eslint '*.{js,jsx}' --fix",
+    "node scripts/lint.js --js --fix --only --",
+    "npx standard \"*.{js,jsx}\" --fix"
+  ],
+  "{!*.d.ts, *.{ts,tsx}}": [
+    "npx prettier --write '*.{ts,tsx}'",
+    "npx eslint '*.{ts,tsx}' --fix",
+    "npx ts-standard \"*.{ts,tsx}\" --fix"
+  ],
+  "*.d.ts": ["npx prettier --write '**/*.d.ts'"],
+  "{!CHANGELOG.md, *.md}": [
+    "npx textlint *.md --fix",
+    "npx markdownlint-cli2 '!{CHANGELOG.md,node_modules/**,out/**}' '*.{md,mdown,markdown}' --fix"
+  ],
+  "*.{gn,gni}": ["npm run gn-check", "npm run gn-format"],
+  "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
+  "*.css": ["stylelint --fix", "prettier --write '*.css'"],
+  "{*.patch,.patches}": [
+    "node scripts/lint.js --patches --only --",
+    "ts-node scripts/js/check-patch-diff.ts"
+  ],
+  "*.{yml,yaml}": "npx prettier '*.{yml,yaml}' --write",
+  "*.json": "npx eslint '*.json' --fix",
+  "*.{py,ipynb}": ["black . --exclude '**/venv/'", "flake8", "mypy .", "pylint ."]
+}

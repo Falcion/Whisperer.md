@@ -1,0 +1,19 @@
+{
+  "plugins": {},
+  "filters": {},
+  "rules": {
+    "date-weekday-mismatch": true,
+    "editorconfig": true,
+    "footnote-order": true,
+    "no-curly-quotes": true,
+    "no-todo": false,
+    "period-in-header": true,
+    "spelling": {
+      "language": "en",
+      "skipPatterns": ["JavaScript"],
+      "wordDefinitionRegexp": "/[\\w']+/g",
+      "suggestCorrections": true
+    },
+    "terminology": true
+  }
+}

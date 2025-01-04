@@ -1,0 +1,1 @@
+npx.cmd --no-installcommitlint--edit"$1"

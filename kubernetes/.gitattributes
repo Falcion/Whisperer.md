@@ -1,0 +1,7 @@
+# Executables
+*.exe             filter=lfs diff=lfs merge=lfs -text
+*.pyc             binary
+# Source code
+*.bat             text eol=crlf
+*.cmd             text eol=crlf
+*.sh              text eol=lf

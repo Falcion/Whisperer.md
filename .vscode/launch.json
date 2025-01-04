@@ -1,0 +1,40 @@
+{
+  "__comment": "https://go.microsoft.com/fwlink/?linkid=830387",
+  "configurations": [
+    {
+      "type": "bashdb",
+      "request": "launch",
+      "name": "Debug custom BASH script",
+      "cwd": "${workspaceFolder}",
+      "program": "${command:${file}}",
+      "args": []
+    },
+    {
+      "name": "Debug with TS-NODE",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/${file}",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "sourceMaps": true,
+      "cwd": "${workspaceFolder}",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+    },
+    {
+      "name": "Debug with TSC",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/${fileBasenameNoExtension}.js",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "sourceMaps": true,
+      "cwd": "${workspaceFolder}",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+    },
+    {
+      "name": "Launch .PY script",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    }
+  ]
+}

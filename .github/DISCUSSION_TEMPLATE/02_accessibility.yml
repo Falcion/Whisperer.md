@@ -1,0 +1,37 @@
+title: '[ACCESS]: '
+labels: ['discussion', 'discussions/accessibility']
+body:
+  - type: dropdown
+    attributes:
+      label: Select accessibility topic
+      description: Please specify the area of accessibility you want to discuss.
+      options:
+        - 'UI/UX Accessibility'
+        - 'Web Content Accessibility Guidelines (WCAG)'
+        - 'Screen Reader Support'
+        - 'Keyboard Navigation'
+        - 'Color Contrast Issues'
+        - 'Other Accessibility Concerns'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: Provide a detailed explanation of the accessibility topic or issue.
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Affected platforms
+      description: Select the platforms where this accessibility issue is observed.
+      options:
+        - 'Web Application'
+        - 'Desktop Application'
+        - 'Mobile Application'
+        - 'Other'
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Suggested Solutions (Optional)
+      description: If you have any suggestions for addressing the issue, provide them here.

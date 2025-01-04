@@ -1,0 +1,21 @@
+{
+  "Verbose": false,
+  "Debug": false,
+  "IgnoreDefaults": false,
+  "SpacesAfterTabs": false,
+  "NoColor": false,
+  "Exclude": [
+    "\\.asc$",
+    "*.sh"
+  ],
+  "AllowedContentTypes": [],
+  "PassedFiles": [],
+  "Disable": {
+    "EndOfLine": true,
+    "Indentation": false,
+    "IndentSize": false,
+    "InsertFinalNewline": true,
+    "TrimTrailingWhitespace": false,
+    "MaxLineLength": false
+  }
+}

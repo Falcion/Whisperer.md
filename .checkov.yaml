@@ -1,0 +1,3 @@
+check:
+  skip:
+    - 'CKV_GHA_7'

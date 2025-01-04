@@ -1,0 +1,24 @@
+{
+  "apps": [
+    {
+      "name": "Settings",
+      "url": "https://github.com/apps/settings"
+    },
+    {
+      "name": "SonarCloud",
+      "url": "https://github.com/marketplace/sonarcloud"
+    },
+    {
+      "name": "CommitCheck",
+      "url": "https://github.com/marketplace/commitcheck"
+    },
+    {
+      "name": "CodeCov",
+      "url": "https://github.com/marketplace/codecov"
+    },
+    {
+      "name": "ImgBot",
+      "url": "https://github.com/marketplace/imgbot"
+    }
+  ]
+}

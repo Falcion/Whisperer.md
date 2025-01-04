@@ -1,0 +1,64 @@
+                 _           _     ____   _  _____ _____ _____ ____  _   _ _   _
+ _ __  _ __ ___ (_) ___  ___| |_  |  _ \ / \|_   _|_   _| ____|  _ \| \ | | | | |
+| '_ \| '__/ _ \| |/ _ \/ __| __| | |_) / _ \ | |   | | |  _| | |_) |  \| | | | |
+| |_) | | | (_) | |  __/ (__| |_  |  __/ ___ \| |   | | | |___|  _ <| |\  | |_| |
+| .__/|_|  \___// |\___|\___|\__| |_| /_/   \_\_|   |_| |_____|_| \_\_| \_|\___/
+|_|           |__/                 _             _____ _    _     ____ ___ ___  _   _
+                                  | |__  _   _  |  ___/ \  | |   / ___|_ _/ _ \| \ | |
+                           _____  | '_ \| | | | | |_ / _ \ | |  | |    | | | | |  \| |
+                          |_____| | |_) | |_| | |  _/ ___ \| |__| |___ | | |_| | |\  |
+                                  |_.__/ \__, | |_|/_/   \_\_____\____|___\___/|_| \_|
+                                         |___/
+
+Patternugit is template for repositories and is designed to serve as a comprehensively
+starting point for your projects. It includes a suite of workflows, documentation, and
+configurations to establish consistency and efficiency in your repository setup.
+
+By utilizing this template, you can accelerate your project kick-off while maintaining
+a structured and organized foundation.
+
+  ____          _                  _
+ / ___|   _ ___| |_ ___  _ __ ___ (_)_______
+| |  | | | / __| __/ _ \| '_ ` _ \| |_  / _ \
+| |__| |_| \__ \ || (_) | | | | | | |/ /  __/_
+ \____\__,_|___/\__\___/|_| |_| |_|_/___\___(_)
+
+Before implementing this repository template for your specific project, we recommend the
+following customizations:
+
+1. check the repository naming on every file of documentation, it would be awkward if
+you will be talking about our project on yours root, but we still would appreciate it.
+2. check the filepaths in scripts, workflows and hyperlinks in markdown documentation,
+your project's hierarchical structure can differ from this one.
+3. assemble required for you workflows and scrap any that wouldn't fit in your
+repository.
+4. assemble required for you dealings documentations, scrap that won't fit for
+repository.
+5. inspect the scripts directory for remaining scripts of this project, if you
+can have any ideas about what to add, we would like to see your's contribution.
+6. inspect the licensing files-in-repository, includes code of conduct, if you
+can have any ideas about what to add, we would like to see your's contribution.
+7. сonfirm that email addresses and contact information within the documentation
+or configuration files reflect the appropriate contact points for your project.
+
+ _   _                                            _   _       _ ___
+| \ | | ___  _ __         ___  ___ ___  ___ _ __ | |_(_) __ _| |__ \
+|  \| |/ _ \| '_ \ _____ / _ \/ __/ __|/ _ \ '_ \| __| |/ _` | | / /
+| |\  | (_) | | | |_____|  __/\__ \__ \  __/ | | | |_| | (_| | ||_|
+|_| \_|\___/|_| |_|      \___||___/___/\___|_| |_|\__|_|\__,_|_|(_)
+
+Project of template encompasses certain features that might not be obligatory for
+all projects, you have the flexibility to retain or remove them according to your
+project's particular needs.
+
+  ____                 _           _
+ / ___|___  _ __   ___| |_   _ ___(_) ___  _ __
+| |   / _ \| '_ \ / __| | | | / __| |/ _ \| '_ \
+| |__| (_) | | | | (__| | |_| \__ \ | (_) | | | |_
+ \____\___/|_| |_|\___|_|\__,_|___/_|\___/|_| |_(_)
+
+Upon customizing this template to suit your project's unique requisites, it is now
+ready to serve as the foundational structure for your project's establishment.
+
+We trust that this one of many templates will expedite your project's journeys and
+initiation process, promoting consistency and streamlined practices.

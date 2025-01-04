@@ -1,0 +1,5 @@
+{
+  "BLACK": "black . --exclude '**/venv/'",
+  "FLAKE8": "flake8",
+  "MYPY": "mypy ."
+}

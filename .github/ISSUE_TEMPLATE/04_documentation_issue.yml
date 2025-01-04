@@ -1,0 +1,52 @@
+name: Issue about the documentation
+description: Use this form to report any issues or inconsistencies you encounter in the project's documentation
+title: '[DOCS]: '
+labels: ['documentation']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this documentation issue, your contribution is invaluable in helping us improve the quality and reliability of repository.
+  - type: markdown
+    attributes:
+      value: |
+        Before you begin, please make sure you've checked if the issue has already been asked, if you find a similar issue, feel free to add any additional information or context that may help us resolve it more effectively.
+  - type: input
+    id: contact
+    attributes:
+      label: Contact details
+      description: If possible, write down the contact information for this documentation issue. If you need additional communication, if you want contact via “github”, leave this field blank.
+      placeholder: example@domain.com
+  - type: input
+    id: where-issue
+    attributes:
+      label: Where is the essence of the bug
+      description: Write the file name and the line of the bugs you've encountered, like “README:L#53”, or link to the lines within service.
+      placeholder: 'README:L#1 or https://github.com/Falcion/Patternugit/blob/019e50dec512bb1c735c5842a5ca5e458998c058/README.md?plain=1#L1'
+    validations:
+      required: true
+  - type: textarea
+    id: what-wanted
+    attributes:
+      label: What the essence of the issue
+      description: And tell the maintainers, what the nature of the issue.
+      placeholder: Write this box, tell us where is the issue.
+      value: ...
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of conduct
+      description: By submitting this documentation issue, you agree to follow our code of conduct.
+      options:
+        - label: I agree to follow this project's code of conduct
+          required: true
+  - type: checkboxes
+    id: issue-policy
+    attributes:
+      label: Issue policy
+      description: By submitting this documentation issue, you agree to follow our issue policy.
+      options:
+        - label: I agree to follow this project's issue policy
+          required: true

@@ -1,0 +1,64 @@
+name: Lint
+on: # yamllint disable-line rule:truthy
+  push: null
+  pull_request: null
+permissions: {}
+jobs:
+  build:
+    name: Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.2.1 # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MARKDOWN_CONFIG_FILE: .markdownlint.json
+          FILTER_REGEX_EXCLUDE: .*workflows/.*
+          LINTER_RULES_PATH: /
+          IGNORE_GITIGNORED_FILES: true
+          JAVASCRIPT_ES_CONFIG_FILE: 'eslint.config.mjs'
+          TYPESCRIPT_ES_CONFIG_FILE: 'eslint.config.mjs'
+          NATURAL_LANGUAGE_CONFIG_FILE: '.textlintrc.json'
+          PYTHON_BLACK_CONFIG_FILE: 'pyproject.toml'
+          PYTHON_FLAKE8_CONFIG_FILE: 'setup.cfg'
+          PYTHON_ISORT_CONFIG_FILE: 'pyproject.toml'
+          PYTHON_MYPY_CONFIG_FILE: 'mypy.ini'
+          PYTHON_PYLINT_CONFIG_FILE: '.pylintrc'
+          PYTHON_RUFF_CONFIG_FILE: 'pyproject.toml'
+          PYTHON_PYINK_CONFIG_FILE: 'pyproject.toml'
+          # PRETTIER is already configured and integrated in repository, moreover
+          # it generates "empty" phantom-errors in the summary of lint checking and
+          # this is the reason why it is turned off in the repository: implemented.
+          VALIDATE_JAVASCRIPT_PRETTIER: false
+          VALIDATE_TYPESCRIPT_PRETTIER: false
+          VALIDATE_JSON_PRETTIER: false
+          VALIDATE_YAML_PRETTIER: false
+          VALIDATE_MARKDOWN_PRETTIER: false
+          # Please, read #195:
+          # https://github.com/Falcion/Patternugit/issues/195
+          VALIDATE_NATURAL_LANGUAGE: false
+          VALIDATE_JAVASCRIPT_ES: false
+          VALIDATE_TYPESCRIPT_ES: false
+          # As the issue above, STANDARD linter bases it's config and function
+          # at the stake of ESLINT, which is not supported
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_TYPESCRIPT_STANDARD: false
+          # Same as STANDARD but worse: this is just subcommand only for JSON format of ESLINT
+          VALIDATE_JSON: false
+          # PYINK is an extension (or either "fork") of BLACK linter and formatter:
+          # https://github.com/google/pyink?tab=readme-ov-file#why-pyink
+          #
+          # (If you want, you can disable/enable it on your own:)
+          VALIDATE_PYTHON_PYINK: false

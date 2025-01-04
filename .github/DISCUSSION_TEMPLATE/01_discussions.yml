@@ -1,0 +1,22 @@
+title: '[COMMON]: '
+labels: ['discussion', 'discussions/common']
+body:
+  - type: dropdown
+    attributes:
+      label: Select area of your topic
+      description: What would you like to discuss?
+      options:
+        - 'Question'
+        - 'Product'
+        - 'Product feedback'
+        - 'Bug'
+        - 'Show and tell'
+        - 'Else'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Body
+      description: Start discussion.
+    validations:
+      required: true

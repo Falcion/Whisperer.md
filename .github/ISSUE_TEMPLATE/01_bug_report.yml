@@ -1,0 +1,107 @@
+name: Bug report
+description: Create a bug report to help to improve the project
+title: '[BUG]: '
+labels:
+  - bug
+  - priority/medium
+body:
+  - type: markdown
+    attributes:
+      value: 'Thanks for taking the time to fill out this bug report, your contribution
+        is invaluable in helping us improve the quality and reliability of repository.
+
+        '
+  - type: markdown
+    attributes:
+      value: "> Before you begin, please make sure you've checked if the bug has already
+        been reported, if you find a similar issue, feel free to add any additional
+        information or context that may help us resolve it more effectively.
+
+        "
+  - type: input
+    id: contact
+    attributes:
+      label: Contact details
+      description: "If possible, write down the contact information for this bug report.\
+        \ If you need additional communication, if you want contact via \u201Cgithub\u201D\
+        , leave this field blank."
+      placeholder: example@domain.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What the essence of the bug
+      description: And tell the maintainers, what did you expect to happen.
+      placeholder: Write this box, tell us where is the issue.
+      value: '...'
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version of an project's essence
+      description: What version of an project's essence are you running.
+      options:
+        - v0.1.0
+        - v0.2.0
+        - v0.2.1
+        - v0.2.2
+        - v0.2.3
+        - v0.2.4
+        - v0.3.0
+        - v0.3.1
+        - v0.3.2
+        - v0.3.3
+        - v0.3.4
+        - v0.3.5
+        - v1.0.0
+        - v1.0.1
+        - v2.0.0
+        - v2.1.0
+        - v2.1.1
+        - v2.1.2
+        - v2.1.3
+        - v2.1.4
+        - v2.1.5
+        - v2.1.6
+        - v2.2.0
+        - Another or unknown
+      default: 1
+    validations:
+      required: true
+  - type: dropdown
+    id: OS
+    attributes:
+      label: On what OS you have encountered the bug.
+      multiple: true
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Mobile (specify)
+        - Not important
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of conduct
+      description: By submitting this bug report, you agree to follow our code of conduct.
+      options:
+        - label: I agree to follow this project's code of conduct
+          required: true
+  - type: checkboxes
+    id: issue-policy
+    attributes:
+      label: Issue policy
+      description: By submitting this bug report, you agree to follow our issue policy.
+      options:
+        - label: I agree to follow this project's issue policy
+          required: true
+  - type: checkboxes
+    id: security-policy
+    attributes:
+      label: Security policy
+      description: By submitting this bug report, you agree to follow our security policy.
+      options:
+        - label: I agree to follow this project's security policy.
+          required: true
