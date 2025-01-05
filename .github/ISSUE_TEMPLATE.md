@@ -3,7 +3,7 @@
 > do not satisfy your needs.
 >
 > **This category of issues will be lower in priority, instead, use:**\
-> [Default forms for issues.](https://github.com/Falcion/Patternugit/issues/new/choose/)
+> [Default forms for issues.](https://github.com/Falcion/Whisperer.md/issues/new/choose/)
 
 - [ ] I'm submitting a bug report;
 - [ ] I'm submitting a question issue;

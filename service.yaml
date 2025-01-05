@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
-  namespace: my-app-namespace # Add a specific namespace here
+  name: Whisperer
+  namespace: Whisperer # Add a specific namespace here
 spec:
   selector:
-    app: my-app
+    app: Whisperer
   ports:
     - protocol: TCP
       port: 80

@@ -2,17 +2,17 @@ Before writing anything about your changes in this pull request, checklist
 these items:
 
 - [ ] Agreed with the current version of the code of conduct.\
-       [Read document here.](https://github.com/Falcion/Patternugit/blob/main/.github/CODE_OF_CONDUCT.md)
+       [Read document here.](https://github.com/Falcion/Whisperer.md/blob/main/.github/CODE_OF_CONDUCT.md)
 - [ ] Read and follow the current version of issue policy.\
-       [Read document here.](https://github.com/Falcion/Patternugit/blob/main/.github/ISSUE_POLICY.md)
+       [Read document here.](https://github.com/Falcion/Whisperer.md/blob/main/.github/ISSUE_POLICY.md)
 - [ ] Read and follow the current version of pull request policy.\
-       [Read document here.](https://github.com/Falcion/Patternugit/blob/main/.github/PULL_REQUEST_POLICY.md)
+       [Read document here.](https://github.com/Falcion/Whisperer.md/blob/main/.github/PULL_REQUEST_POLICY.md)
 
 Keep in mind security issues:
 
 - [ ] Read and accept the privacy and confidentiality agreements regarding security
       issues and personal data in accordance with the security policy.\
-       [Read security policy here.](https://github.com/Falcion/Patternugit/blob/main/.github/SECURITY.md)
+       [Read security policy here.](https://github.com/Falcion/Whisperer.md/blob/main/.github/SECURITY.md)
 
 By agreeing and following this project's documentation, you are reminded that
 your's commit and styling of changes must follow this project's documentation,

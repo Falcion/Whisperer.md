@@ -19,7 +19,8 @@
   "files.associations": {
     "*ignore*": "ignore",
     "README": "plaintext",
-    "*-{comments, readme}*": "markdown"
+    "*-comments": "plaintext",
+    "*-{readme}*": "markdown"
   },
   /* Ignoring E0015 for invoking bash-like environment in some scripts.
      Inherited from scripts and infrastructure demands for linters associations.

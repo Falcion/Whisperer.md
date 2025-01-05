@@ -1,4 +1,4 @@
-At PATTERNU, the project's maintainers are committed to creating an inclusive and
+At WHISPERER, the project's maintainers are committed to creating an inclusive and
 respectful environment for all members, participants, and contributors:
 it is believed, that a strong and welcoming community is essential to
 fostering collaboration, innovation, growth and common landscape of open-source.
@@ -12,7 +12,7 @@ and the conduct we expect from one another.
 
 Project's maintainers invite you to familiarize yourself with this code-doc
 and embrace its principles as you engage with our community; by doing so, you
-contribute to making PATTERNU's community a place where diverse perspectives
+contribute to making WHISPERER's community a place where diverse perspectives
 are valued, ideas are freely exchanged, and where we can collectively thrive.
 
 The code-doc of this, aims to foster an open, innovative, and

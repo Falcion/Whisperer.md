@@ -1,4 +1,4 @@
-At PATTERNU, the project takes the security of its code, data, and the broader
+At WHISPERER, the project takes the security of its code, data, and the broader
 community seriously, this security policy (thereafter as “policy”) outlines the
 measures and expectations we have in place to safeguard our repository and its
 users from potential security threats.
@@ -10,7 +10,7 @@ of everyone involved.
 
 Policy is intended to provide clear guidelines and procedures for addressing security-related
 issues, reporting vulnerabilities, and maintaining a safe and productive environment
-for all contributors and users, PATTERNU wants to encourage you to read and adhere
+for all contributors and users, WHISPERER wants to encourage you to read and adhere
 to these guidelines as you engage with this repository.
 
 By working together to prioritize security, we can maintain the integrity of our
@@ -68,14 +68,10 @@ party discloses detailed vulnerability or exploit information to the public, thr
 the vulnerability investigation, the vendor maintains coordination with the researcher
 and provides updates on the progress of the case.
 
-<!--
- Write here reference to security and support for media you are creating project,
- example:
- Any security-issue NOT related to this plugin directly, but to the Obsidian™ app
- itself, contact the developers of the app, not the team of this project:
+Any security-issue NOT related to this plugin directly, but to the Obsidian™ app
+itself, contact the developers of the app, not the team of this project:
 
-- https://help.obsidian.md/help+and+support/
- -->
+- <https://help.obsidian.md/help+and+support/>
 
 Once an update is released, the vendor may recognize the researcher for their
 research and privately report the issue; in cases where attacks are already underway

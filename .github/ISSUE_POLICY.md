@@ -1,4 +1,4 @@
-Issues are the lifeblood of PATTERNU, they help us track, prioritize, and address
+Issues are the lifeblood of WHISPERER, they help us track, prioritize, and address
 bugs, feature requests, and other improvements, project appreciates your interest
 in contributing to our project by creating, commenting on, or managing issues.
 

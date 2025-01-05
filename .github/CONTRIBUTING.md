@@ -10,7 +10,7 @@ team maintain a positive and productive atmosphere for all.
 
 - Before making any contributions or reading this document, make yourself familiar
   with the code of conduct of this project:\
-  [“Code-doc” of PATTERNU's community](./CODE_OF_CONDUCT.md)
+  [“Code-doc” of WHISPERER's community](./CODE_OF_CONDUCT.md)
 
 ## Contribution guidelines
 

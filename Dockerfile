@@ -10,7 +10,7 @@ USER appuser
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
-COPY prepare.ts ./
+COPY source/ ./
 
 # Install dependencies
 RUN npm install
@@ -22,7 +22,7 @@ COPY . .
 EXPOSE 3000
 
 # Command to start your application
-CMD ["npm", "run", "prepare:template"]
+CMD ["npm", "run", "build"]
 
 # Add a HEALTHCHECK to monitor the container
 HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app-deployment
+  name: Whisperer
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: my-app
+      app: Whisperer
   template:
     metadata:
       labels:
-        app: my-app
+        app: Whisperer
     spec:
       containers: # Correctly indented
         - name: nginx-container

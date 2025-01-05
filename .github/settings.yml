@@ -2,16 +2,16 @@
 
 repository:
   # The name of the repository. Changing this will rename the repository
-  name: Patternugit
+  name: Whisperer.md
 
   # A short description of the repository that will show up on GitHub
-  description: Preconfigured pattern for your repository with universal cases for markdown files of documentations and other actions/scripts
+  description: A plugin for note-taking app Obsidian™ which allows you to play ambience music in vault and assign different tracks to files specifically
 
   # A URL with more information about the repository
   homepage:
 
   # A comma-separated list of topics to set on the repository
-  topics: github,template,documentation,repository,template-project,documentations,repository-template,github-template,template-repository,workflows-to-access,workflows-reusable
+  topics: plugin,music,files,ambience,typescript,obsidian,obsidian-plugin
 
   # Either `true` to make the repository private, or `false` to make it public.
   private: false
@@ -24,7 +24,7 @@ repository:
   has_projects: true
 
   # Either `true` to enable the wiki for this repository, `false` to disable it.
-  has_wiki: false
+  has_wiki: true
 
   # Either `true` to enable downloads for this repository, `false` to disable them.
   has_downloads: true
