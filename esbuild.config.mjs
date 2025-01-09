@@ -14,7 +14,7 @@ if you want to view the source, please visit the github repository of this plugi
 
 const manifest = {
   name: 'manifest',
-  setup(build) {
+  setup (build) {
     build.onEnd(() => {
       fs.writeFileSync('out/manifest.json', fs.readFileSync('manifest.json'), 'utf8')
     })
