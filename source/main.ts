@@ -145,10 +145,6 @@ export default class Whisperer extends Plugin {
 
         player = document.createElement('div')
         player.className = 'vault-ambience-player'
-        player.style.position = 'fixed'
-        player.style.bottom = '10px'
-        player.style.right = '10px'
-        player.style.zIndex = '1000'
 
         if (this.isUrl(this.settings.vault_ambience_path)) {
             if (
@@ -163,7 +159,6 @@ export default class Whisperer extends Plugin {
             this.setupLocalAudioPlayer(player)
         }
 
-        player.style.display = 'none';
         container.appendChild(player)
 
         this._players.push(player)
@@ -283,11 +278,6 @@ export default class Whisperer extends Plugin {
         // Create new player
         const player = document.createElement('div')
         player.className = 'file-ambience-player'
-        player.style.position = 'fixed'
-        player.style.bottom = '10px'
-        player.style.right = '10px'
-        player.style.zIndex = '1000'
-        player.style.display = 'none';
 
         if (this.isUrl(musicPath)) {
             // Handle YouTube or SoundCloud URLs
@@ -299,7 +289,7 @@ export default class Whisperer extends Plugin {
                 iframe.height = '166'
                 iframe.frameBorder = '0'
                 iframe.allow = 'autoplay'
-                iframe.style.display = 'none';
+                iframe.addClass('hidden-frame');
                 player.appendChild(iframe)
             } else if (musicPath.includes('soundcloud.com')) {
                 const embedUrl = this.getEmbedUrl(musicPath)
@@ -309,7 +299,7 @@ export default class Whisperer extends Plugin {
                 iframe.height = '166'
                 iframe.allow = 'autoplay'
                 iframe.frameBorder = '0'
-                iframe.style.display = 'none';
+                iframe.addClass('hidden-frame');
                 player.appendChild(iframe)
             }
         } else {

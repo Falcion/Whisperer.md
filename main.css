@@ -1,0 +1,25 @@
+.vault-ambience-player {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: none;
+}
+
+.file-ambience-player {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: none;
+}
+
+.input-field {
+  width: 100%;
+  height: 48px;
+  min-height: 36px;
+}
+
+.hidden-frame {
+  display: none;
+}

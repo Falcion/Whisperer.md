@@ -12,6 +12,17 @@ if you want to view the source, please visit the github repository of this plugi
 */
 `
 
+const assigner = {
+  name: 'assigner',
+  setup (build) {
+    build.onEnd(() => {
+      const main = fs.readFileSync('main.css', 'utf8')
+
+      fs.writeFileSync('out/styles.css', main, 'utf8')
+    })
+  }
+}
+
 const manifest = {
   name: 'manifest',
   setup (build) {
@@ -33,6 +44,7 @@ const context = await esbuild.context({
     glsl({
       minify: true
     }),
+    assigner,
     manifest
   ],
   bundle: true,

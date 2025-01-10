@@ -101,9 +101,7 @@ export default class WhispererSettingsTab extends PluginSettingTab {
                 await this.plugin.updateSettings(next);
             });
 
-        vaultAmbiencePathInput.inputEl.style.width = '100%';
-        vaultAmbiencePathInput.inputEl.style.height = '48px';
-        vaultAmbiencePathInput.inputEl.style.minHeight = '36px';
+        vaultAmbiencePathInput.inputEl.addClass('input-field');
 
         this._updateDisplays([vaultAmbiencePath, vaultAmbiencePathInput], [this.plugin.settings.vault_ambience, this.plugin.settings.vault_ambience]);
 
