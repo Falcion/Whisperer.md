@@ -62,7 +62,6 @@ export default class WhispererSettingsTab extends PluginSettingTab {
         } = this;
 
         containerEl.empty();
-        containerEl.createEl('h3', { text: 'Whisperer\'s settings:' });
 
         new Setting(containerEl)
             .setName('Vault ambience:')
