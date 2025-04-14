@@ -8,27 +8,26 @@ COMMITTED_FILES=$(git diff --cached --name-only)
 # Check each file for PGP private key pattern
 # If you want to push
 for FILE in $COMMITTED_FILES; do
-    if [ "$FILE" != "$PRE_COMMIT_SCRIPT" ]; then
-        if grep -q -- "$PGP_KEY_PATTERN" "$FILE"; then
-        echo "Warning: private context data in $FILE"
-        exit 1
-        fi
-    fi
+	if [ "$FILE" != "$PRE_COMMIT_SCRIPT" ]; then
+		if grep -q -- "$PGP_KEY_PATTERN" "$FILE"; then
+			echo "Warning: private context data in $FILE"
+			exit 1
+		fi
+	fi
 done
 
 forbidden_files=("config.json" ".env")
 
 # Check if any forbidden files are staged
 for file in $(git diff --name-only --cached); do
-  for forbidden in "${forbidden_files[@]}"; do
-    if [[ $file == "$forbidden"* ]]; then
-      echo "Warning: commiting development configuration data found which are found in $file"
-    fi
-  done
+	for forbidden in "${forbidden_files[@]}"; do
+		if [[ $file == "$forbidden"* ]]; then
+			echo "Warning: commiting development configuration data found which are found in $file"
+		fi
+	done
 done
 
 if sh -c ": >/dev/tty" >/dev/null 2>/dev/null; then exec >/dev/tty 2>&1; fi
 
-npx standard --fix
 node chmod-scripts.mjs
 npx lint-staged

@@ -18,7 +18,14 @@ const compat = new FlatCompat({
 export default [
   {
     // Global ignore patterns
-    ignores: ['**/node_modules/', '**/dist/', '**/out/', '**/prepare_template.js', '*.d.ts', '**/venv/']
+    ignores: [
+      '**/node_modules/',
+      '**/dist/',
+      '**/out/',
+      '**/prepare_template.js',
+      '*.d.ts',
+      '**/venv/'
+    ]
   },
   {
     // JavaScript-specific configuration
@@ -34,8 +41,6 @@ export default [
       }
     }
   },
-  ...compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended'),
-  ...eslintPluginJsonc.configs['flat/recommended-with-jsonc'],
   {
     // TypeScript-specific configuration
     files: ['**/*.ts', '**/*.tsx'],
@@ -55,9 +60,11 @@ export default [
       '@typescript-eslint/interface-name-prefix': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-var-requires': 'off'
     }
-  }
+  },
+  ...compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended'),
+  ...eslintPluginJsonc.configs['flat/recommended-with-jsonc']
 ]

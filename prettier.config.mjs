@@ -1,4 +1,8 @@
-module.exports = {
+/**
+ * @see https://prettier.io/docs/en/configuration.html
+ * @type {import("prettier").Config}
+ */
+const config = {
   tabWidth: 2,
   useTabs: false,
   bracketSpacing: true,
@@ -27,7 +31,7 @@ module.exports = {
       }
     },
     {
-      files: '*.json',
+      files: '*.{json}',
       options: {
         parser: 'jsonc'
       }
@@ -35,3 +39,5 @@ module.exports = {
   ],
   printWidth: 100
 }
+
+export default config
