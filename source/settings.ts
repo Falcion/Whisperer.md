@@ -44,12 +44,17 @@ export default class WhispererSettingsTab extends PluginSettingTab {
 
     const settingsConstructor = new SettingsConstructor(this.plugin, containerEl)
 
-    settingsConstructor.SETTING_AMBIENCE
-    settingsConstructor.SETTING_VAULT_PATH_TITLE
-    settingsConstructor.SETTING_VAULT_PATH_INPUT
-    settingsConstructor.SETTING_AMBIENCE_PER_FILE
-    settingsConstructor.SETTING_AMBIENCE_PER_FILE_COMMENT
+    const items = [
+      settingsConstructor.SETTING_AMBIENCE,
+      settingsConstructor.SETTING_VAULT_PATH_TITLE,
+      settingsConstructor.SETTING_VAULT_PATH_INPUT,
+      settingsConstructor.SETTING_AMBIENCE_PER_FILE,
+      settingsConstructor.SETTING_AMBIENCE_PER_FILE_COMMENT
+    ]
 
-    settingsConstructor.previewDisplays()
+    SettingsConstructor.updateDisplays(
+      [items[1], items[2]],
+      [this.plugin.settings.vault_ambience, this.plugin.settings.vault_ambience]
+    )
   }
 }

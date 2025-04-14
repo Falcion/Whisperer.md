@@ -27,7 +27,7 @@
 import { Plugin, TFile } from 'obsidian'
 
 import WhispererSettingsTab from './settings'
-import { WHISPERER_SETTINGS, DEFAULT_SETTINGS } from './settings/isettings'
+import { WHISPERER_SETTINGS, DEFAULT_SETTINGS } from './settings/settings'
 import PlayerPerFile from './player/player_per_file'
 import PlayerPerGlobal from './player/player_per_global'
 
