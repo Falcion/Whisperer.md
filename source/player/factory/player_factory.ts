@@ -27,7 +27,7 @@ export default class PlayerFactory {
   private static setupYouTubePlayer(plugin: Whisperer, player: HTMLElement): void {
     const videoId = extractId(plugin.settings.vault_ambience_path)
     const iframe = document.createElement('iframe')
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&enablejsapi=1&playlist=${videoId}`
     iframe.width = '300'
     iframe.height = '166'
     iframe.allow = 'autoplay'
@@ -51,8 +51,10 @@ export default class PlayerFactory {
 
   private static setupSoundCloudPlayer(plugin: Whisperer, player: HTMLElement): void {
     const embedUrl = getEmbedUrl(plugin.settings.vault_ambience_path)
+    // Add visual parameter to support API
+    const apiEnabledUrl = `${embedUrl}&visual=true&show_artwork=false`
     const iframe = document.createElement('iframe')
-    iframe.src = embedUrl
+    iframe.src = apiEnabledUrl
     iframe.width = '300'
     iframe.height = '166'
     iframe.allow = 'autoplay'
@@ -68,7 +70,11 @@ export default class PlayerFactory {
     audio.controls = true
     audio.autoplay = true
     audio.loop = true
-    audio.volume = (plugin.settings.music_volume || 50) / 100 // Set initial volume
+    audio.volume = (plugin.settings.music_volume || 50) / 100
+    audio.addEventListener('volumechange', () => {
+      plugin.settings.music_volume = audio.volume * 100
+      plugin.saveData(plugin.settings)
+    })
 
     player.appendChild(audio)
   }

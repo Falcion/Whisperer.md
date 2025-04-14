@@ -55,11 +55,29 @@ export default class Whisperer extends Plugin {
       this.app.workspace.on('file-open', this.playerPerFile.handleFileOpen.bind(this))
     ) // Listen for file open
 
+    const container = document.getElementsByClassName('obsidian-app')[0]
+
+    if (container) {
+      const script = document.createElement('script')
+
+      script.src = 'https://w.soundcloud.com/player/api.js'
+      script.id = 'whisperer-md-sc-widget'
+
+      container.appendChild(script)
+    }
+
     this.apply()
   }
 
   async onunload(): Promise<void> {
     super.onunload()
+
+    const script = document.getElementById('whisperer-md-sc-widget') as HTMLScriptElement | null
+
+    if (script) {
+      script.src = ''
+      script.remove()
+    }
 
     this.unapply()
   }
@@ -111,7 +129,7 @@ export default class Whisperer extends Plugin {
                 method: 'setVolume',
                 value: this.settings.music_volume / 100
               }),
-              '*'
+              'https://w.soundcloud.com'
             )
           }
         } else if (player.tagName === 'AUDIO') {
@@ -126,7 +144,13 @@ export default class Whisperer extends Plugin {
   public unapply(): void {
     this.players.forEach((player) => {
       player.remove()
+      const iframe = player.querySelector('iframe')
+      if (iframe) {
+        iframe.src = '' // Prevent memory leaks
+      }
     })
+
+    this.players = []
 
     for (const playerData of this.fileAmbiencePlayers.values()) {
       playerData.player.remove()

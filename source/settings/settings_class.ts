@@ -13,6 +13,7 @@ export default class SettingsConstructor {
   private _SETTING_VAULT_PATH_INPUT?: TextAreaComponent
   private _SETTING_AMBIENCE_PER_FILE?: Setting
   private _SETTING_AMBIENCE_PER_FILE_COMMENT?: Setting
+  private _SETTING_MUSICE_VOLUME?: Setting
 
   public plugin: Whisperer
   public containerEl: HTMLElement
@@ -120,6 +121,35 @@ export default class SettingsConstructor {
     }
 
     return this._SETTING_AMBIENCE_PER_FILE_COMMENT!
+  }
+
+  public get SETTING_MUSIC_VOLUME(): Setting {
+    if (!this._SETTING_MUSICE_VOLUME) {
+      this._SETTING_MUSICE_VOLUME = new Setting(this.containerEl)
+        .setName('Music volume')
+        .setDesc(
+          "Control volume of YouTube/Local audios. Audio from SoundCloud doesn't support this feature."
+        )
+        .addSlider((slider) => {
+          slider
+            .setDynamicTooltip()
+            .setLimits(
+              this.plugin.settings.MIN_VOLUME,
+              this.plugin.settings.MAX_VOLUME,
+              this.plugin.settings.VOLUME_STEP
+            )
+            .onChange(async (value) => {
+              const next = {
+                ...this.plugin.settings,
+                music_volume: value
+              }
+
+              this.plugin.updateVolumeSettings(next)
+            })
+        })
+    }
+
+    return this._SETTING_MUSICE_VOLUME!
   }
 
   public static updateDisplays(elements: (Setting | TextAreaComponent)[], values: boolean[]): void {

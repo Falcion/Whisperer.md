@@ -49,7 +49,8 @@ export default class WhispererSettingsTab extends PluginSettingTab {
       settingsConstructor.SETTING_VAULT_PATH_TITLE,
       settingsConstructor.SETTING_VAULT_PATH_INPUT,
       settingsConstructor.SETTING_AMBIENCE_PER_FILE,
-      settingsConstructor.SETTING_AMBIENCE_PER_FILE_COMMENT
+      settingsConstructor.SETTING_AMBIENCE_PER_FILE_COMMENT,
+      settingsConstructor.SETTING_MUSIC_VOLUME
     ]
 
     SettingsConstructor.updateDisplays(
