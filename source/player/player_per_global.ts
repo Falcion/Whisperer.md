@@ -22,6 +22,7 @@ export default class PlayerPerGlobal {
 
     player = document.createElement('div')
     player.className = 'vault-ambience-player'
+    player.addClass(this.plugin.settings.debug_frames ? 'visible' : 'hidden-frame')
 
     if (isUrl(this.plugin.settings.vault_ambience_path)) {
       if (

@@ -60,7 +60,7 @@ export default class PlayerPerFile {
         iframe.width = '300'
         iframe.height = '166'
         iframe.allow = 'autoplay'
-        iframe.addClass('hidden-frame')
+        iframe.addClass(this.plugin.settings.debug_frames ? 'visible' : 'hidden-frame')
         player.appendChild(iframe)
       } else if (musicPath.includes('soundcloud.com')) {
         const embedUrl = getEmbedUrl(musicPath)
@@ -69,7 +69,7 @@ export default class PlayerPerFile {
         iframe.width = '300'
         iframe.height = '166'
         iframe.allow = 'autoplay'
-        iframe.addClass('hidden-frame')
+        iframe.addClass(this.plugin.settings.debug_frames ? 'visible' : 'hidden-frame')
         player.appendChild(iframe)
       }
     } else {

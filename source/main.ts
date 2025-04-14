@@ -141,6 +141,21 @@ export default class Whisperer extends Plugin {
     }
   }
 
+  async updateVisibleSettings(settings: WHISPERER_SETTINGS): Promise<void> {
+    if (this.players.length === 0) {
+      this.updateSettings(settings)
+    } else {
+      this._settings = settings
+
+      await this.saveData(this.settings)
+
+      this.players.forEach((player) => {
+        player.removeClass(this.settings.debug_frames ? 'hidden-frame' : 'visible')
+        player.addClass(this.settings.debug_frames ? 'visible' : 'hidden-frame')
+      })
+    }
+  }
+
   public unapply(): void {
     this.players.forEach((player) => {
       player.remove()
