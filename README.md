@@ -124,14 +124,14 @@ Guidelines for direct-installation way:
 2. Disable restricted mode, and use "Community plugins → Browse" to find this plugin:
    type the name of the project or just write “any as note”;
 3. Use plugin, edit vault's ambience, set music to specified files accordingly.
-1. Download last tag on project's repository, for the last ZIP-tarball link provided
+4. Download last tag on project's repository, for the last ZIP-tarball link provided
    below:\
     [download latest release](https://github.com/Falcion/Patternugit/releases/latest/)
    - or just download the source-code through "Code → Download ZIP (or any option
      that you want)", and proceed to the next step;
-2. Within downloaded ZIP (or project), clone everything and paste to the directory
+5. Within downloaded ZIP (or project), clone everything and paste to the directory
    of your project via "copy+paste" procedure;
-3. Now, you can use project just as if you installed it from other algorithms.
+6. Now, you can use project just as if you installed it from other algorithms.
 
 Guidelines for installation of source code of this project:
 
@@ -180,8 +180,8 @@ More about plugin's functionality and how to use it, read at the wiki:\
 
 - [x] Adapt project's infrastructure (repository from template) for it's
   needs and requirements;
-- [ ] Write first version of project;
-- [ ] Publish it on OBSIDIAN's plugins registry;
+- [x] Write first version of project;
+- [x] Publish it on OBSIDIAN's plugins registry;
 - [ ] Write a wiki for the project;
 - [ ] Make more advanced controls over music in the vault and files;
 
