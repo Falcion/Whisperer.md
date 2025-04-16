@@ -40,7 +40,7 @@ export default class SettingsConstructor {
 
             await this.plugin.updateSettings(next)
 
-            this._updateDisplays(
+            SettingsConstructor.updateDisplays(
               [this.SETTING_VAULT_PATH_TITLE, this.SETTING_VAULT_PATH_INPUT],
               [value, value]
             )
@@ -176,19 +176,6 @@ export default class SettingsConstructor {
   }
 
   public static updateDisplays(elements: (Setting | TextAreaComponent)[], values: boolean[]): void {
-    if (elements.length !== values.length)
-      throw new Error('Elements and their values both are out of range in some other ways.')
-
-    for (let i = 0; i < elements.length; i++) {
-      const element = elements[i]
-
-      if (element instanceof Setting) element.settingEl.style.display = values[i] ? 'block' : 'none'
-      if (element instanceof TextAreaComponent)
-        element.inputEl.style.display = values[i] ? 'block' : 'none'
-    }
-  }
-
-  private _updateDisplays(elements: (Setting | TextAreaComponent)[], values: boolean[]) {
     if (elements.length !== values.length)
       throw new Error('Elements and their values both are out of range in some other ways.')
 
