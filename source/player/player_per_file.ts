@@ -62,15 +62,23 @@ export default class PlayerPerFile {
         iframe.allow = 'autoplay'
         iframe.addClass(this.plugin.settings.debug_frames ? 'visible' : 'hidden-frame')
         player.appendChild(iframe)
-      } else if (musicPath.includes('soundcloud.com')) {
-        const embedUrl = getEmbedUrl(musicPath)
-        const iframe = document.createElement('iframe')
-        iframe.src = embedUrl
-        iframe.width = '300'
-        iframe.height = '166'
-        iframe.allow = 'autoplay'
-        iframe.addClass(this.plugin.settings.debug_frames ? 'visible' : 'hidden-frame')
-        player.appendChild(iframe)
+      } else {
+        try {
+          const parsedUrl = new URL(musicPath);
+          const allowedHosts = ['soundcloud.com'];
+          if (allowedHosts.includes(parsedUrl.host)) {
+            const embedUrl = getEmbedUrl(musicPath);
+            const iframe = document.createElement('iframe');
+            iframe.src = embedUrl;
+            iframe.width = '300';
+            iframe.height = '166';
+            iframe.allow = 'autoplay';
+            iframe.addClass(this.plugin.settings.debug_frames ? 'visible' : 'hidden-frame');
+            player.appendChild(iframe);
+          }
+        } catch (e) {
+          console.error('Invalid URL:', musicPath, e);
+        }
       }
     } else {
       // Handle local files
