@@ -25,15 +25,15 @@ export default class PlayerPerGlobal {
     player.addClass(this.plugin.settings.debug_frames ? 'visible' : 'hidden-frame')
 
     if (isUrl(this.plugin.settings.vault_ambience_path)) {
-      if (
-        this.plugin.settings.vault_ambience_path.includes('youtube.com') ||
-        this.plugin.settings.vault_ambience_path.includes('youtu.be')
-      ) {
-        PlayerFactory.createPlayer(this.plugin, player, 'yt')
-      } else if (this.plugin.settings.vault_ambience_path.includes('soundcloud.com')) {
-        PlayerFactory.createPlayer(this.plugin, player, 'sc')
+      const url = new URL(this.plugin.settings.vault_ambience_path);
+      const allowedYouTubeHosts = ['youtube.com', 'youtu.be'];
+      const allowedSoundCloudHosts = ['soundcloud.com'];
+
+      if (allowedYouTubeHosts.includes(url.host)) {
+        PlayerFactory.createPlayer(this.plugin, player, 'yt');
+      } else if (allowedSoundCloudHosts.includes(url.host)) {
+        PlayerFactory.createPlayer(this.plugin, player, 'sc');
       }
-    } else {
       PlayerFactory.createPlayer(this.plugin, player, 'local')
     }
 
