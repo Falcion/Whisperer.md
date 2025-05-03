@@ -1,5 +1,5 @@
 {
-  "name": "Patternugit Dev Container",
+  "name": "Whisperer.md (for Obsidian) Dev Container",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
@@ -20,7 +20,11 @@
         "ms-python.python",
         "dbaeumer.vscode-eslint",
         "redhat.vscode-yaml",
-        "ms-kubernetes-tools.vscode-kubernetes-tools"
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "aaron-bond.better-comments",
+        "kisstkondoros.vscode-codemetrics",
+        "boundarystudio.js-extentions-pack",
+        "YoavBls.pretty-ts-errors"
       ]
     }
   },
