@@ -120,7 +120,7 @@ export default class PlayerPerFile {
           JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
           '*'
         )
-      } else if (player.src.includes('soundcloud.com')) {
+      } else {
         try {
           const parsedUrl = new URL(player.src);
           const allowedHosts = ['soundcloud.com'];
