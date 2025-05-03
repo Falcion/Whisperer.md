@@ -128,15 +128,21 @@ export default class Whisperer extends Plugin {
           }
 
           // Handle SoundCloud player
-          if (iframe.src.includes('soundcloud.com')) {
-            // SoundCloud iframe API supports message listeners for certain features
-            iframe.contentWindow?.postMessage(
-              JSON.stringify({
-                method: 'setVolume',
-                value: this.settings.music_volume / 100
-              }),
-              'https://w.soundcloud.com'
-            )
+          try {
+            const url = new URL(iframe.src);
+            const allowedSoundCloudHosts = ['soundcloud.com', 'w.soundcloud.com'];
+            if (allowedSoundCloudHosts.includes(url.hostname)) {
+              // SoundCloud iframe API supports message listeners for certain features
+              iframe.contentWindow?.postMessage(
+                JSON.stringify({
+                  method: 'setVolume',
+                  value: this.settings.music_volume / 100
+                }),
+                'https://w.soundcloud.com'
+              );
+            }
+          } catch (e) {
+            console.error('Invalid iframe src URL:', iframe.src);
           }
         } else if (player.tagName === 'AUDIO') {
           // Handle local audio player
