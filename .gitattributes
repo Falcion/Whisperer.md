@@ -188,7 +188,8 @@ Procfile          text
 *.woff            binary
 *.woff2           binary
 # Executables
-*.exe             filter=lfs diff=lfs merge=lfs -text
+#*.exe             filter=lfs diff=lfs merge=lfs -text
+*.exe             binary
 *.pyc             binary
 # Prevents massive diffs caused by vendored, minified files
 **/.yarn/releases/**   binary

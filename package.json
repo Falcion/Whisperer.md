@@ -54,6 +54,7 @@
     "prerelease:alpha": "npm run release -- --prerelease alpha",
     "generate-version-json": "node scripts/js/generate-version-json.js",
     "push-lfs": "git lfs push --all origin",
+    "pull-lfs": "git lfs pull",
     "i-js": "npm i --force",
     "i-py": "cd scripts/python && pip install -r requirements.txt",
     "i-g": "npm run i-js && npm run i-py"
