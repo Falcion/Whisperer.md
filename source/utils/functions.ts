@@ -8,7 +8,7 @@ export function getEmbedUrl(url: string): string {
       ? url.split('/').pop()
       : new URL(url).searchParams.get('v')
     return `https://www.youtube.com/embed/${videoId}?autoplay=1&start=0`
-  } else if (url.includes('soundcloud.com')) {
+  } else if (new URL(url).host === 'soundcloud.com' || new URL(url).host === 'www.soundcloud.com') {
     return `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&auto_play=true`
   }
   throw new Error('Unsupported URL type.')
