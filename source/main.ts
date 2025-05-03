@@ -110,15 +110,21 @@ export default class Whisperer extends Plugin {
           const iframe = player as HTMLIFrameElement
 
           // Handle YouTube player
-          if (iframe.src.includes('youtube.com') || iframe.src.includes('youtu.be')) {
-            iframe.contentWindow?.postMessage(
-              JSON.stringify({
-                event: 'command',
-                func: 'setVolume',
-                args: [this.settings.music_volume]
-              }),
-              '*'
-            )
+          try {
+            const url = new URL(iframe.src);
+            const allowedYouTubeHosts = ['youtube.com', 'www.youtube.com', 'youtu.be'];
+            if (allowedYouTubeHosts.includes(url.hostname)) {
+              iframe.contentWindow?.postMessage(
+                JSON.stringify({
+                  event: 'command',
+                  func: 'setVolume',
+                  args: [this.settings.music_volume]
+                }),
+                '*'
+              );
+            }
+          } catch (e) {
+            console.error('Invalid iframe src URL:', iframe.src);
           }
 
           // Handle SoundCloud player
