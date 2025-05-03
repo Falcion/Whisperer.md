@@ -1,5 +1,4 @@
 #!/bin/bash
-git config core.fileMode true
 
 git update-index --chmod=+x ./.husky/pre-commit
 git add --chmod=+x ./.husky/pre-commit
@@ -28,7 +27,3 @@ chmod +x ./scripts/shell/publish-nuget.sh
 git update-index --chmod=+x ./chmod.sh
 git add --chmod=+x ./chmod.sh
 chmod +x chmod.sh
-
-git add .
-git commit -m "chore: auto-lint for bash script"
-git config core.fileMode false
