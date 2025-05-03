@@ -121,7 +121,15 @@ export default class PlayerPerFile {
           '*'
         )
       } else if (player.src.includes('soundcloud.com')) {
-        player.contentWindow?.postMessage(JSON.stringify({ method: 'pause' }), '*')
+        try {
+          const parsedUrl = new URL(player.src);
+          const allowedHosts = ['soundcloud.com'];
+          if (allowedHosts.includes(parsedUrl.host)) {
+            player.contentWindow?.postMessage(JSON.stringify({ method: 'pause' }), '*');
+          }
+        } catch (e) {
+          console.error('Invalid URL in player.src:', player.src, e);
+        }
       }
     }
 
