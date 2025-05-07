@@ -15,6 +15,9 @@ var __defNormalProp = (obj, key, value) =>
   key in obj
     ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value })
     : (obj[key] = value)
+var __export = (target, all) => {
+  for (var name in all) __defProp(target, name, { get: all[name], enumerable: true })
+}
 var __copyProps = (to, from, except, desc) => {
   if ((from && typeof from === 'object') || typeof from === 'function') {
     for (let key of __getOwnPropNames(from))
@@ -39,6 +42,7 @@ var __toESM = (mod, isNodeMode, target) => (
     mod
   )
 )
+var __toCommonJS = (mod) => __copyProps(__defProp({}, '__esModule', { value: true }), mod)
 var __publicField = (obj, key, value) =>
   __defNormalProp(obj, typeof key !== 'symbol' ? key + '' : key, value)
 var __async = (__this, __arguments, generator) => {
@@ -64,144 +68,212 @@ var __async = (__this, __arguments, generator) => {
 }
 
 // prepare-template.ts
-var fs = __toESM(require('fs-extra'))
+var prepare_template_exports = {}
+__export(prepare_template_exports, {
+  LOCALE_LOGGER: () => LOCALE_LOGGER,
+  default: () => LOCALE_MODULE
+})
+module.exports = __toCommonJS(prepare_template_exports)
+var os = __toESM(require('os'))
 var path = __toESM(require('path'))
-var dotenv = __toESM(require('dotenv'))
-var import_safe = require('colors/safe')
-var PREPARE_MODULE = class {
+var fs = __toESM(require('fs-extra'))
+var readline = __toESM(require('readline'))
+var colors = __toESM(require('colors/safe'))
+var PROMPTS = [
+  'DO YOU WANT TO UPDATE AND CHECK YOUR MANIFEST FOR THE SYNC',
+  'DO YOU WANT TO ADD WORDS TO SEARCH FOR THEM IN THE PROJECT',
+  'WRITE THE WORDS SEPARATED BY COMMA'
+]
+if (os.type() === 'Darwin') process.abort()
+var LOCALE_LOGGER = class {
   /**
-   * Creates an instance of the PREPARE_MODULE.
-   * @param {string[]} entries - An array of custom entries to include for searching.
+   * Logs the info message.
+   * @param {...any} data - The data to be logged.
    */
-  constructor(entries) {
-    /** The root directory of the module. */
-    __publicField(this, 'ROOT_DIRECTORY', __dirname)
-    /** An array of folder names to exclude from traversal. */
-    __publicField(this, 'EXCLUDING_FOLDER', ['node_modules', 'venv', '.git', 'out'])
-    /** An array of values to include in the search. */
-    __publicField(this, 'INCLUDING_VALUES', ['FALCION', 'PATTERNU', 'PATTERNUGIT'])
-    if (entries[0] !== 'NO') {
-      for (const item of entries) this.INCLUDING_VALUES.push(item)
-    }
+  static info(...data) {
+    const datetime = /* @__PURE__ */ new Date().toLocaleString()
+    console.info(colors.blue(`[${datetime}] < ${this.session_id} > 	 - ${data.join(' ')}`))
   }
   /**
-   * Searches for specified data within a file.
+   * Logs the warn message.
+   * @param {...any} data - The data to be logged.
+   */
+  static warn(...data) {
+    const datetime = /* @__PURE__ */ new Date().toLocaleString()
+    console.warn(colors.yellow(`[${datetime}] < ${this.session_id} > 	 - ${data.join(' ')}`))
+  }
+  /**
+   * Logs the error message.
+   * @param {...any} data - The data to be logged.
+   */
+  static error(...data) {
+    const datetime = Date.now().toLocaleString()
+    console.error(colors.bgRed(colors.white(`[${datetime}] < ${this.session_id} > 	 - ${data}`)))
+  }
+  /**
+   * Logs the success message.
+   * @param {...any} data - The data to be logged.
+   */
+  static success(...data) {
+    const datetime = Date.now().toLocaleString()
+    console.log(colors.green(`[${datetime}] < ${this.session_id} > 	 - ${data}`))
+  }
+  /**
+   * Logs the message with custom color.
+   * @param {(str: string) => string} color - The color function.
+   * @param {...any} data - The data to be logged.
+   */
+  static raw(color, ...data) {
+    console.debug(color(data.join(' ')))
+  }
+  /**
+   * Formats a message with custom color.
+   * @param {(str: string) => string} color - The color function.
+   * @param {string} message - The message to be formatted.
+   * @returns {string} The formatted message.
+   */
+  static msg(color, message) {
+    return color(message)
+  }
+}
+/**
+ * A process ID which represents session of localized logger instance.
+ * @type {number}
+ */
+__publicField(LOCALE_LOGGER, 'session_id', process.ppid)
+var LOCALE_MODULE = class {
+  constructor() {
+    /**
+     * The root directory of the module.
+     * @type {string}
+     */
+    __publicField(this, 'ROOT_DIRECTORY', __dirname)
+    /**
+     * Directories to be excluded from traversal.
+     * @type {string[]}
+     */
+    __publicField(this, 'EXCLUDING_FOLDERS', [
+      'node_modules',
+      'dist',
+      'venv',
+      '.git',
+      '$git',
+      '$',
+      'out',
+      'bin'
+    ])
+    /**
+     * Values to be excluded from file content search.
+     * @type {string[]}
+     */
+    __publicField(this, 'EXCLUDING_VALUES', [
+      'FALCION',
+      'PATTERNU',
+      'PATTERNUGIT',
+      'PATTERNUGIT.NET'
+    ])
+  }
+  /**
+   * Updates the exclusion settings based on user input.
+   * @param {string[]} entries - Entries to be added to the exclusion list.
+   * @param {string} actions - User action (Y or N).
+   */
+  update(entries, actions) {
+    if (actions.length > 1) {
+      throw new RangeError('Action input must be a char.')
+    }
+    if (actions === 'Y') {
+      for (const entry of entries) {
+        this.EXCLUDING_VALUES.push(entry)
+      }
+    }
+    if (actions === 'N') {
+      this.EXCLUDING_FOLDERS = entries
+    }
+    if (CONFIG.USE_GITIGNORE) {
+      const gitignore = fs.readFileSync('.gitignore').toString().split('\n')
+      gitignore.forEach((line) => {
+        if (line[0] !== '#' && line[0] !== '!') this.EXCLUDING_FOLDERS.push(line)
+      })
+    }
+    fs.ensureFileSync(CONFIG.LOGS_FILE)
+  }
+  /**
+   * Searches for specified words in file contents.
    * @param {string} filepath - The path of the file to search.
-   * @param {string[]} data - An array of strings to search for within the file.
-   * @returns {Promise<void>} - A promise that resolves when the search is complete.
+   * @param {string[]} data - Words to search for.
+   * @returns {Promise<void>} A promise representing the search operation.
    */
   search(filepath, data) {
     return __async(this, null, function* () {
-      const content = (yield fs.readFile(filepath, 'utf-8')).split('\n')
-      for (let i = 0; i < content.length; i++) {
-        const line = content[i].toUpperCase()
+      const buffer = yield fs.readFile(filepath, { encoding: 'utf-8' })
+      const stream = fs.createWriteStream(CONFIG.LOGS_FILE, { flags: 'a' })
+      const contents = buffer.split(os.EOL)
+      for (let i = 0; i < contents.length; i++) {
+        const line = contents[i].toUpperCase()
         for (const target of data) {
           if (line.includes(target)) {
-            console.info(
-              (0, import_safe.green)(
-                `Found "${target}" in L#${i} of:
-` + (0, import_safe.cyan)(filepath)
-              )
-            )
+            LOCALE_LOGGER.raw(colors.green, `Found "${target}" in L#${i} of: `)
+            LOCALE_LOGGER.raw(colors.cyan, filepath)
+            stream.write(`Found "${target}" in L#${i} of:` + os.EOL)
+            stream.write(`	${filepath}` + os.EOL)
           }
         }
       }
+      stream.end()
     })
   }
   /**
-   * Recursively traverses a directory and searches for files.
-   * @param {string} directory - The directory path to traverse.
-   * @returns {Promise<void>} - A promise that resolves when the traversal is complete.
+   * Traverses directories and searches files for specified words.
+   * @param {string} directory - The directory to start traversal from.
+   * @returns {Promise<void>} A promise representing the traversal operation.
    */
-  traverse(directory) {
-    return __async(this, null, function* () {
+  traverse() {
+    return __async(this, arguments, function* (directory = __dirname) {
       try {
-        const files = yield fs.readdir(directory)
-        for (const file of files) {
-          const filepath = path.join(directory, file)
-          const filestat = yield fs.stat(filepath)
-          if (filestat.isDirectory()) {
-            if (!this.EXCLUDING_FOLDER.includes(file)) {
-              yield this.traverse(filepath)
-            }
-          } else if (filestat.isFile()) {
-            yield this.search(filepath, this.INCLUDING_VALUES)
+        const items = yield fs.readdir(directory)
+        for (const item of items) {
+          const itempath = path.join(directory, item)
+          const itemstats = yield fs.stat(itempath)
+          if (itemstats.isDirectory()) {
+            if (!this.EXCLUDING_FOLDERS.includes(item)) yield this.traverse(itempath)
+          } else if (itemstats.isFile()) {
+            yield this.search(itempath, this.EXCLUDING_VALUES)
           } else {
-            throw new Error(
-              (0, import_safe.red)('Invalid data format:') + (0, import_safe.bgRed)(` ${filepath}`)
-            )
+            continue
           }
         }
       } catch (err) {
-        const error = err instanceof Error ? err : new Error('Unknown error.')
-        if (error.stack === 'ENOENT') {
-          console.error((0, import_safe.red)(`File or directory not found: ${error.message}`))
-        } else {
-          console.error(
-            (0, import_safe.red)(
-              `Error reading directory: ${error.message}: ${error.stack !== void 0 ? error.stack : ''}`
-            )
-          )
-        }
+        LOCALE_LOGGER.error(err)
       }
     })
   }
 }
-fs.ensureFileSync(path.join(__dirname, '.env'))
-fs.ensureFileSync(path.join(__dirname, 'manifest.json'))
-fs.writeFileSync(path.join(__dirname, '.env'), 'EXAMPLE_API_KEY=')
-fs.writeFileSync(path.join(__dirname, 'manifest.json'), JSON.stringify({}, void 0, 4))
-dotenv.config({
-  path: '.env',
-  encoding: 'utf-8'
-})
-var PACKAGE_JSON = JSON.parse(fs.readFileSync('package.json', { encoding: 'utf-8' }))
-var MANIFEST = JSON.parse(fs.readFileSync('manifest.json', { encoding: 'utf-8' }))
-if (
-  PACKAGE_JSON.name === MANIFEST.id &&
-  PACKAGE_JSON.displayName === MANIFEST.name &&
-  PACKAGE_JSON.description === MANIFEST.description &&
-  PACKAGE_JSON.author.name === MANIFEST.author &&
-  PACKAGE_JSON.author.url === MANIFEST.authorUrl &&
-  PACKAGE_JSON.license === MANIFEST.license &&
-  PACKAGE_JSON.version === MANIFEST.version
-) {
-  console.warn(
-    (0, import_safe.bgGreen)(
-      (0, import_safe.white)('Manifest is synced with package, keep everything as it was.')
-    )
-  )
-} else {
-  console.warn(
-    (0, import_safe.bgBlue)(
-      (0, import_safe.yellow)("Manifest is not synced with package's information, rewriting it.")
-    )
-  )
-  fs.copyFileSync('manifest.json', 'manifest-backup.json')
-  const inputJson = {
-    id: PACKAGE_JSON.name,
-    name: PACKAGE_JSON.displayName,
-    description: PACKAGE_JSON.description,
-    author: PACKAGE_JSON.author.name,
-    authorUrl: PACKAGE_JSON.author.url,
-    license: PACKAGE_JSON.license,
-    version: PACKAGE_JSON.version
-  }
-  fs.writeFileSync('manifest.json', JSON.stringify(inputJson, void 0, 4))
+var CONFIG = {
+  USE_GITIGNORE: true,
+  GITIGNORE_PATH: './.gitignore',
+  LOGS_FILE: `preparations-${/* @__PURE__ */ new Date().toLocaleDateString()}.logs`
 }
-void new PREPARE_MODULE(['NO']).traverse(PREPARE_MODULE.prototype.ROOT_DIRECTORY).then(() => {
-  console.log((0, import_safe.green)('Traverse is finished.'))
-})
-/**
- * The MIT License (MIT)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @license MIT
- * @author Falcion
- * @year 2023-2024
- */
+;(() => {
+  const RL = readline.createInterface({ input: process.stdin, output: process.stdout })
+  RL.setPrompt(PROMPTS[1])
+  const mod = new LOCALE_MODULE()
+  RL.question(
+    colors.bgBlue(colors.yellow('Add custom entries to path-finding script (Y/N/IGNORE): ')),
+    (mode) => {
+      if (mode.toUpperCase() === 'Y') {
+        RL.question('Enter parameters (comma-separated): ', (params) => {
+          const diction = params.split(',').map((str) => str.trim())
+          mod.update(diction, mode.toUpperCase())
+          RL.close()
+          mod.traverse()
+        })
+      } else if (mode.toUpperCase() === 'N') {
+        RL.close()
+        mod.traverse()
+      } else {
+        RL.close()
+      }
+    }
+  )
+})()

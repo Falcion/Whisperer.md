@@ -1,14 +1,14 @@
 {
-  "*.{js,jsx}": [
-    "npx prettier --write '*.{js,jsx}'",
-    "npx eslint '*.{js,jsx}' --fix",
+  "*.{mjs,js,jsx}": [
+    "npx prettier --write '*.{mjs,js,jsx}'",
+    "npx eslint '*.{mjs,js,jsx}' --fix",
     "node scripts/lint.js --js --fix --only --",
-    "npx standard \"*.{js,jsx}\" --fix"
+    "npx standard \"*.{mjs,js,jsx}\" --fix"
   ],
-  "{!*.d.ts, *.{ts,tsx}}": [
-    "npx prettier --write '*.{ts,tsx}'",
-    "npx eslint '*.{ts,tsx}' --fix",
-    "npx ts-standard \"*.{ts,tsx}\" --fix"
+  "{!*.d.ts, *.{mts,ts,tsx}}": [
+    "npx prettier --write '*.{mts,ts,tsx}'",
+    "npx eslint '*.{mts,ts,tsx}' --fix",
+    "npx ts-standard \"*.{mts,ts,tsx}\" --fix"
   ],
   "*.d.ts": ["npx prettier --write '**/*.d.ts'"],
   "{!CHANGELOG.md, *.md}": [

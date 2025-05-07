@@ -1,3 +1,31 @@
 # Add 'code-scanning' label to any changes within 'code-scanning' folder or any subfolders
-backlog:
-  - code-scanning/**/*
+# code-scanning:
+#   - code-scanning/**/*
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: 'docs/**'
+automation/ci-cd:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/workflows/**', '.github/*.yml']
+automation/tooling:
+  - changed-files:
+      - any-glob-to-any-file: 'kubernetes/**'
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file: ['**/package*', '**/composer*', '**/yarn*', '**/requirements*']
+main:
+  - changed-files:
+      - any-glob-to-any-file: 'source/**'
+python:
+  - changed-files:
+      - any-glob-to-any-file: '**/*.py'
+release:
+  - changed-files:
+      - any-glob-to-any-file: 'release/**'
+  - base-branch: 'release*'
+javascript:
+  - changed-files:
+      - any-glob-to-any-file: '**/*.js'
+github_actions:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/workflows/**', '.github/*.yml']

@@ -1,0 +1,103 @@
+{
+  "repository_name": "Patternugit",
+  "visibility": "public",
+  "default_branch": "main",
+  "danger_zone": {
+    "visibility": "public",
+    "branch_protection_rules": true,
+    "archive": false
+  },
+  "features": {
+    "wikis": {
+      "enabled": true,
+      "restrict_editing_to_collaborators": true
+    },
+    "issues": true,
+    "sponsorships": false,
+    "preserve_repository": true,
+    "discussions": true,
+    "projects": true
+  },
+  "pull_requests": {
+    "allow_merge_commits": {
+      "enabled": true,
+      "default_commit_message": "Default message"
+    },
+    "allow_squash_merging": {
+      "enabled": true,
+      "default_commit_message": "Default message"
+    },
+    "allow_rebase_merging": true,
+    "always_suggest_updating_branches": true,
+    "allow_auto_merge": true,
+    "automatically_delete_head_branches": true
+  },
+  "archives": {
+    "include_git_lfs_objects": true
+  },
+  "pushes": {
+    "limit_updates": true,
+    "max_updates_per_push": 5
+  },
+  "collaborators": {
+    "access": "none"
+  },
+  "moderation_options": {
+    "limit_to_existing_users": true,
+    "limit_to_prior_contributors": true,
+    "limit_to_repository_collaborators": true
+  },
+  "branch_settings": {
+    "protected_branches": ["main*", "development*"]
+  },
+  "rulesets": [
+    "Auto-imported tag create protections",
+    "Auto-imported tag delete protections",
+    "main*"
+  ],
+  "actions": {
+    "allow_all_actions_and_reusable_workflows": true,
+    "artifact_log_retention_days": 30,
+    "require_approval_for_fork_workflows": true,
+    "workflow_permissions": "read_write",
+    "allow_github_actions_to_create_approve_prs": true
+  },
+  "runners": null,
+  "webhooks": null,
+  "environments": ["development", "production"],
+  "codespaces": null,
+  "pages": null,
+  "security_settings": {
+    "private_vulnerability_reporting": true,
+    "dependency_graph": true,
+    "automatic_dependency_submission": true,
+    "dependabot": {
+      "alerts": true,
+      "dismiss_low_impact_alerts": true,
+      "security_updates": true,
+      "grouped_security_updates": true,
+      "on_actions_runners": true
+    },
+    "code_scanning": {
+      "tools": ["CodeQL Advanced (Configured)"],
+      "protection_rules": {
+        "check_runs_failure_threshold": {
+          "security_alert_severity": "high_or_higher",
+          "standard_alert_severity_error": "only_errors"
+        }
+      }
+    },
+    "secret_scanning": true,
+    "push_protection": true
+  },
+  "deploy_keys": null,
+  "secrets_and_variables": {
+    "actions": null,
+    "codespaces": null,
+    "dependabot": null
+  },
+  "integrations": {
+    "github_apps": ["ImgBot", "Settings"]
+  },
+  "email_notifications": true
+}

@@ -3,3 +3,9 @@ If you have different OS, read README of this project:
 
 And download required version of SHFMT for you:
 <https://github.com/patrickvane/shfmt/releases>
+
+To use:
+
+```bash
+shfmt -l -w script.sh
+```

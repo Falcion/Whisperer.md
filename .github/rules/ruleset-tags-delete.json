@@ -1,0 +1,32 @@
+{
+  "id": 1747575,
+  "name": "Auto-imported tag delete protections",
+  "target": "tag",
+  "source_type": "Repository",
+  "source": "Falcion/Patternugit",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": [
+        "refs/tags/*.*.*",
+        "refs/tags/v*"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "update"
+    },
+    {
+      "type": "deletion"
+    }
+  ],
+  "bypass_actors": [
+    {
+      "actor_id": 5,
+      "actor_type": "RepositoryRole",
+      "bypass_mode": "always"
+    }
+  ]
+}

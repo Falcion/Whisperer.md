@@ -20,7 +20,7 @@ jobs:
           # list of files that changed across commits
           fetch-depth: 0
       - name: Super-linter
-        uses: super-linter/super-linter@v7.2.1 # x-release-please-version
+        uses: super-linter/super-linter@v7.3.0 # x-release-please-version
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -41,9 +41,15 @@ jobs:
           # PRETTIER is already configured and integrated in repository, moreover
           # it generates "empty" phantom-errors in the summary of lint checking and
           # this is the reason why it is turned off in the repository: implemented.
+          VALIDATE_GRAPHQL_PRETTIER: false
+          VALIDATE_HTML_PRETTIER: false
+          VALIDATE_CSS_PRETTIER: false
           VALIDATE_JAVASCRIPT_PRETTIER: false
           VALIDATE_TYPESCRIPT_PRETTIER: false
           VALIDATE_JSON_PRETTIER: false
+          VALIDATE_JSONC_PRETTIER: false
+          VALIDATE_JSX_PRETTIER: false
+          VALIDATE_VUE_PRETTIER: false
           VALIDATE_YAML_PRETTIER: false
           VALIDATE_MARKDOWN_PRETTIER: false
           # Please, read #195:

@@ -1,3 +1,20 @@
+#!/bin/bash
+
+COMMON_EXT=(
+	# Archives & Installers
+	7z a ar arj cab dmg iso rar tar tbz tbz2 tgz zip zipx
+	# Images & Design
+	bmp cur gif ico icns jpeg jpg png psd svg tga tif tiff
+	# Multimedia
+	aac avi flac flv mkv mov mp3 mp4 mpeg ogg wav wmv
+	# Apps & Binaries
+	apk bin dll exe lib so appimage
+	# Documents
+	doc docx epub odt pdf ppt pptx xls xlsx
+	# Misc.
+	jar msi tar.gz
+)
+
 # Regex pattern to match PGP private key
 PGP_KEY_PATTERN='-----BEGIN PGP PRIVATE KEY BLOCK-----'
 PRE_COMMIT_SCRIPT=".husky/pre-commit"
@@ -8,27 +25,65 @@ COMMITTED_FILES=$(git diff --cached --name-only)
 # Check each file for PGP private key pattern
 # If you want to push
 for FILE in $COMMITTED_FILES; do
-    if [ "$FILE" != "$PRE_COMMIT_SCRIPT" ]; then
-        if grep -q -- "$PGP_KEY_PATTERN" "$FILE"; then
-        echo "Warning: private context data in $FILE"
-        exit 1
-        fi
-    fi
+	if [ "$FILE" != "$PRE_COMMIT_SCRIPT" ]; then
+		if grep -q -- "$PGP_KEY_PATTERN" "$FILE"; then
+			echo "Warning: private context data in $FILE"
+			exit 1
+		fi
+	fi
 done
 
 forbidden_files=("config.json" ".env")
 
 # Check if any forbidden files are staged
 for file in $(git diff --name-only --cached); do
-  for forbidden in "${forbidden_files[@]}"; do
-    if [[ $file == "$forbidden"* ]]; then
-      echo "Warning: commiting development configuration data found which are found in $file"
-    fi
-  done
+	for forbidden in "${forbidden_files[@]}"; do
+		if [[ $file == "$forbidden"* ]]; then
+			echo "Warning: commiting development configuration data found which are found in $file"
+		fi
+	done
 done
 
 if sh -c ": >/dev/tty" >/dev/null 2>/dev/null; then exec >/dev/tty 2>&1; fi
 
-npx standard --fix
-node chmod-scripts.mjs
 npx lint-staged
+
+#  _     _____ ____     ____ _   _ _____ ____ _  __
+# | |   |  ___/ ___|   / ___| | | | ____/ ___| |/ /
+# | |   | |_  \___ \  | |   | |_| |  _|| |   | ' /
+# | |___|  _|  ___) | | |___|  _  | |__| |___| . \
+# |_____|_|   |____/   \____|_| |_|_____\____|_|\_\
+
+EXCLUDE='^(node_modules/|venv/|\.git/)'
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.('"$(printf "%s|" "${COMMON_EXT[@]}" | sed 's/|$//')"')$' | grep -Ev "$EXCLUDE" || true)
+
+[ -z "$STAGED" ] && exit 0
+
+GITATTR=".gitattributes"
+ACTIVE=$(grep -E '^[[:space:]]*\*\.[^[:space:]]+.*filter=lfs' "$GITATTR" || true)
+COMMENTED=$(grep -E '^[[:space:]]*#.*\*\.[^[:space:]]+.*filter=lfs' "$GITATTR" || true)
+
+WARN=0
+
+for file in $STAGED; do
+	ext="${file##*.}"
+	pattern="\*.$ext"
+	if ! echo "$ACTIVE" | grep -q "$pattern"; then
+		if echo "$COMMENTED" | grep -q "$pattern"; then
+			echo "⚠️  LFS rule for '$pattern' is commented out in $GITATTR, but '$file' is staged."
+			echo "    → Uncomment or run: git lfs track \"$pattern\""
+		else
+			echo "⚠️  '$file' is staged but '$pattern' is not tracked by Git LFS:"
+			echo "    → Run: git lfs track \"$pattern\" && git add $GITATTR"
+		fi
+		WARN=1
+	fi
+done
+
+if [ "$WARN" -eq 1 ]; then
+	echo
+	echo "💡 Reminder: After generating from this template, run 'git lfs install' and commit your updated .gitattributes.'"
+fi
+
+exit 0

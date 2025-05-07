@@ -1,0 +1,8 @@
+{
+  "maintenance": "https://img.shields.io/badge/status-maintenance-crimson",
+  "archived": "https://img.shields.io/badge/status-archived-lightseagreen",
+  "development": {
+    "active": "https://img.shields.io/badge/status-development-dodgerblue",
+    "pending": "https://img.shields.io/badge/status-pending-orangered"
+  }
+}
