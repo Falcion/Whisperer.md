@@ -16,4 +16,4 @@ There is a methodology (methodology) for working with these files, their creatio
 4. The changelog does not change when copying from the original file (CHANGELOG.md),
    with the exception of extreme validation errors (broken links, etc.);
 5. Repeating the version tag in the release file is NOT WELCOME, that's what the
-   file name is for.
+   filename is for.

@@ -41,11 +41,11 @@ git config --get core.fileMode
 - If it outputs false, Git is not tracking file permission changes.
 - To enable it temporarily for this repository:
 
-    ```bash
-    git config core.fileMode true
-    ```
+  ```bash
+  git config core.fileMode true
+  ```
 
-If `chmod +x` (or other ways) doesn’t show changes in Git status, you can force Git
+If `chmod +x` (or other ways) doesn't show changes in Git status, you can force Git
 to reapply the executable bit:
 
 ```bash
@@ -55,8 +55,7 @@ git update-index --chmod=+x path/to/file
 This explicitly tells Git to update its metadata for the files, after this, you can
 commit and push the changes.
 
-> [!Note]
-> **Alternative approach:**
+> [!Note] > **Alternative approach:**
 > Use a `.gitattributes` file:
 >
 > ```plaintext
@@ -93,7 +92,7 @@ git rm --cached -r .
 git reset --hard
 ```
 
-If the `x` is missing and the above steps didn’t work, proceed with the guidelines.
+If the `x` is missing and the above steps didn't work, proceed with the guidelines.
 
 ### Connecting with hooks
 
@@ -113,7 +112,7 @@ And the script with usage of file system library, looks like this:
 import { chmodSync, readdirSync, statSync } from 'fs'
 import { join } from 'path'
 
-function setExecutable (filePath) {
+function setExecutable(filePath) {
   try {
     chmodSync(filePath, '755')
   } catch (error) {
@@ -121,7 +120,7 @@ function setExecutable (filePath) {
   }
 }
 
-function processDirectory (dirPath) {
+function processDirectory(dirPath) {
   readdirSync(dirPath).forEach((file) => {
     const fullPath = join(dirPath, file)
     if (statSync(fullPath).isDirectory()) {

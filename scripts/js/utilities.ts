@@ -12,65 +12,66 @@
  * @year 2023-2025
  */
 
-import * as fs from 'fs';
-import * as colors from 'colors/safe';
+import * as fs from 'fs'
+import * as colors from 'colors/safe'
 
-(async () => {
+  ; (async () => {
     // Configuration
     const CONFIG = {
-        ROOT_DIR: './../../',
-        FILE_CHANGELOG: 'CHANGELOG.md',
-        FILE_VERSIONING: 'UNSUPPORTED_VERSIONS.md',
-        IGNORE_MARKDOWNLINT: '<!-- markdownlint-disable -->'
-    };
+      ROOT_DIR: './../../',
+      FILE_CHANGELOG: 'CHANGELOG.md',
+      FILE_VERSIONING: 'UNSUPPORTED_VERSIONS.md',
+      IGNORE_MARKDOWNLINT: '<!-- markdownlint-disable -->',
+      IGNORE_TEXTLINT: '<!-- textlint-disable -->'
+    }
 
     //#region Checking CHANGELOG upon ignoring markdownlint
-    const CHANGELOG_PATH = CONFIG.ROOT_DIR + CONFIG.FILE_CHANGELOG;
-    const CHANGELOG_DATA = fs.readFileSync(CHANGELOG_PATH, { encoding: 'utf-8' }).split('\n');
+    const CHANGELOG_PATH = CONFIG.ROOT_DIR + CONFIG.FILE_CHANGELOG
+    const CHANGELOG_DATA = fs.readFileSync(CHANGELOG_PATH, { encoding: 'utf-8' }).split('\n')
 
-    console.log(CHANGELOG_DATA[0]);
-    console.log(CHANGELOG_DATA[0].includes(CONFIG.IGNORE_MARKDOWNLINT));
+    console.log(CHANGELOG_DATA[0])
+    console.log(CHANGELOG_DATA[0].includes(CONFIG.IGNORE_MARKDOWNLINT))
 
     if (!CHANGELOG_DATA[0].includes(CONFIG.IGNORE_MARKDOWNLINT)) {
-        const updatedData = [CONFIG.IGNORE_MARKDOWNLINT, ...CHANGELOG_DATA].join('\n');
+      const updatedData = [CONFIG.IGNORE_MARKDOWNLINT, CONFIG.IGNORE_TEXTLINT, ...CHANGELOG_DATA].join('\n')
 
-        fs.writeFile(CHANGELOG_PATH, updatedData, (err) => {
-            if (err) {
-                console.error('Error writing to CHANGELOG:', err.message);
-            } else {
-                console.log('CHANGELOG updated successfully.');
-            }
-        });
+      fs.writeFile(CHANGELOG_PATH, updatedData, (err) => {
+        if (err) {
+          console.error('Error writing to CHANGELOG:', err.message)
+        } else {
+          console.log('CHANGELOG updated successfully.')
+        }
+      })
     }
     //#endregion
 
     //#region Checking UNSUPPORTED_VERSIONS upon ignoring markdownlint
-    const VERSIONING_PATH = CONFIG.ROOT_DIR + CONFIG.FILE_VERSIONING;
-    const VERSIONING_DATA = fs.readFileSync(VERSIONING_PATH, { encoding: 'utf-8' }).split('\n');
+    const VERSIONING_PATH = CONFIG.ROOT_DIR + CONFIG.FILE_VERSIONING
+    const VERSIONING_DATA = fs.readFileSync(VERSIONING_PATH, { encoding: 'utf-8' }).split('\n')
 
-    console.log(VERSIONING_DATA[0]);
-    console.log(VERSIONING_DATA[0].includes(CONFIG.IGNORE_MARKDOWNLINT));
+    console.log(VERSIONING_DATA[0])
+    console.log(VERSIONING_DATA[0].includes(CONFIG.IGNORE_MARKDOWNLINT))
 
     if (!VERSIONING_DATA[0].includes(CONFIG.IGNORE_MARKDOWNLINT)) {
-        const updatedData = [CONFIG.IGNORE_MARKDOWNLINT, ...VERSIONING_DATA].join('\n');
+      const updatedData = [CONFIG.IGNORE_MARKDOWNLINT, CONFIG.IGNORE_TEXTLINT, ...VERSIONING_DATA].join('\n')
 
-        fs.writeFile(VERSIONING_PATH, updatedData, (err) => {
-            if (err) {
-                console.error('Error writing to UNSUPPORTED_VERSIONS:', err.message);
-            } else {
-                console.log('UNSUPPORTED_VERSIONS updated successfully.');
-            }
-        });
+      fs.writeFile(VERSIONING_PATH, updatedData, (err) => {
+        if (err) {
+          console.error('Error writing to UNSUPPORTED_VERSIONS:', err.message)
+        } else {
+          console.log('UNSUPPORTED_VERSIONS updated successfully.')
+        }
+      })
     }
     //#endregion
 
     console.warn(
-        colors.bgYellow(
-            colors.bold(
-                colors.blue(
-                    "Please, check and assign correct status for project in README after the release to show the current status of the project's development."
-                )
-            )
+      colors.bgYellow(
+        colors.bold(
+          colors.blue(
+            "Please, check and assign correct status for project in README after the release to show the current status of the project's development."
+          )
         )
-    );
-})();
+      )
+    )
+  })()

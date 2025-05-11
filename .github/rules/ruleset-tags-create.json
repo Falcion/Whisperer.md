@@ -8,10 +8,7 @@
   "conditions": {
     "ref_name": {
       "exclude": [],
-      "include": [
-        "refs/tags/*.*.*",
-        "refs/tags/v*"
-      ]
+      "include": ["refs/tags/*.*.*", "refs/tags/v*"]
     }
   },
   "rules": [

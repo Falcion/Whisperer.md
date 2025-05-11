@@ -2,8 +2,8 @@
 
 > [!Note]
 > References were partially script-generated (packages references), if you see any
-  mistake (skipped reference, wrong license and etc.) please, open an documentation
-  issue.
+> mistake (skipped reference, wrong license and etc.) please, open an documentation
+> issue.
 > **Last edited: 20th January, 2025**
 
 This document is created to reference every project, repository, organization upon
@@ -33,7 +33,7 @@ entire chain of dependencies which develop this infrastructure.**
 - [@types/fs-extra](https://www.npmjs.com/package/@types/fs-extra)
 - [@types/minimist](https://www.npmjs.com/package/@types/minimist)
 - [@types/node](https://www.npmjs.com/package/@types/node)
-- [@types/semver](https://www.npmjs.com/package/@types/semver)
+- [@types/SemVer](https://www.npmjs.com/package/@types/semver)
 - [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
 - [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
 - [builtin-modules](https://www.npmjs.com/package/builtin-modules)
@@ -41,11 +41,11 @@ entire chain of dependencies which develop this infrastructure.**
 - [check-for-leaks](https://www.npmjs.com/package/check-for-leaks)
 - [colors](https://www.npmjs.com/package/colors)
 - [dugite](https://www.npmjs.com/package/dugite)
-- [editorconfig](https://www.npmjs.com/package/editorconfig)
+- [EditorConfig](https://www.npmjs.com/package/editorconfig)
 - [esbuild](https://www.npmjs.com/package/esbuild)
 - [esbuild-plugin-node-externals](https://www.npmjs.com/package/esbuild-plugin-node-externals)
 - [esbuild-sass-plugin](https://www.npmjs.com/package/esbuild-sass-plugin)
-- [eslint](https://www.npmjs.com/package/eslint)
+- [ESLint](https://www.npmjs.com/package/eslint)
 - [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)
 - [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
 - [eslint-plugin-jsonc](https://www.npmjs.com/package/eslint-plugin-jsonc)
@@ -100,13 +100,13 @@ entire chain of dependencies which develop this infrastructure.**
 ### Apache-2.0
 
 - [lint](https://www.npmjs.com/package/lint)
-- [typescript](https://www.npmjs.com/package/typescript)
+- [TypeScript](https://www.npmjs.com/package/typescript)
 
 ### ISC
 
 - [@npmcli/package-json](https://www.npmjs.com/package/@npmcli/package-json)
 - [eslint-plugin](https://www.npmjs.com/package/eslint-plugin)
-- [semver](https://www.npmjs.com/package/semver)
+- [SemVer](https://www.npmjs.com/package/semver)
 - [standard-version](https://www.npmjs.com/package/standard-version)
 
 ### GPL-3.0-or-later
@@ -206,7 +206,7 @@ entire chain of dependencies which develop this infrastructure.**
 - [nbconvert](https://pypi.org/project/nbconvert/)
 - [nbformat](https://pypi.org/project/nbformat/)
 
-### BSD 3-Clause License  - Copyright (c) 2015-, Jupyter Development Team
+### BSD 3-Clause License - Copyright (c) 2015-, Jupyter Development Team
 
 - [jupyter_core](https://pypi.org/project/jupyter_core/)
 
@@ -218,7 +218,7 @@ entire chain of dependencies which develop this infrastructure.**
 
 - [MarkupSafe](https://pypi.org/project/MarkupSafe/)
 
-### BSD 3-Clause License  Copyright (c) 2019-2022, IPython Development Team
+### BSD 3-Clause License Copyright (c) 2019-2022, IPython Development Team
 
 - [matplotlib-inline](https://pypi.org/project/matplotlib-inline/)
 
@@ -226,7 +226,7 @@ entire chain of dependencies which develop this infrastructure.**
 
 - [mccabe](https://pypi.org/project/mccabe/)
 
-### BSD 3-Clause License  Copyright (c) 2020-, Jupyter Development Team
+### BSD 3-Clause License Copyright (c) 2020-, Jupyter Development Team
 
 - [nbclient](https://pypi.org/project/nbclient/)
 
@@ -254,10 +254,10 @@ entire chain of dependencies which develop this infrastructure.**
 
 - [pywin32](https://pypi.org/project/pywin32/)
 
-### BSD 3-Clause License  Copyright (c) 2009-2012, Brian Granger, Min Ragan-Kelley
+### BSD 3-Clause License Copyright (c) 2009-2012, Brian Granger, Min Ragan-Kelley
 
 - [pyzmq](https://pypi.org/project/pyzmq/)
 
-### BSD 3-Clause License  - Copyright (c) 2001-, IPython Development Team
+### BSD 3-Clause License - Copyright (c) 2001-, IPython Development Team
 
 - [traitlets](https://pypi.org/project/traitlets/)

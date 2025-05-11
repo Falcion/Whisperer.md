@@ -1,7 +1,7 @@
 # Release Notes Template for Public Releases
 
 > [!Note]
-> This template is specifically designed for *public releases* displayed on the
+> This template is specifically designed for _public releases_ displayed on the
 > "Releases" page of a project hosted on GitHub. For "hard" templates, i.e., local
 > release files stored in the repository, please refer to the following document:
 >
@@ -43,7 +43,7 @@ preference or audience.
 
 The footer typically includes a reference to the changelog or a link to the local
 release version stored in the repository. This serves as a more technical publication
-of the release’s changelog.
+of the release's changelog.
 
 ## Technical Guidelines for Releases and Patch Notes
 
@@ -51,19 +51,19 @@ To ensure proper management and publication of release notes, adhere to the foll
 best practices:
 
 1. **Commit Management**
-    Always monitor the last commit to which the release or tag will be attached.
-    This ensures consistency and accuracy in versioning.
+   Always monitor the last commit to which the release or tag will be attached.
+   This ensures consistency and accuracy in versioning.
 2. **Semantic Versioning**
-    Understand and maintain the logical flow of version numbers according to semantic
-    versioning. Verify their accuracy before publication.
-3. **Pre-release Tags**
-    Avoid using "pre-release" tags unless necessary. These are suitable for development
-    versions, beta releases, or other testing phases.
+   Understand and maintain the logical flow of version numbers according to semantic
+   versioning. Verify their accuracy before publication.
+3. **Prerelease Tags**
+   Avoid using "prerelease" tags unless necessary. These are suitable for development
+   versions, beta releases, or other testing phases.
 4. **Target Branch**
-    Set the release target (target menu upon release) to the **default branch**
-    of your project.
+   Set the release target (target menu upon release) to the **default branch**
+   of your project.
    - **Exceptions:** This rule can only be violated if explicitly documented as
-   part of the workflow (e.g., Public Beta Environment releases).
+     part of the workflow (e.g., Public Beta Environment releases).
 5. **Attachments**
    If your project does not require attached files for releases, follow these guidelines:
    - **Patches:** Never attach binary files.
@@ -71,10 +71,10 @@ best practices:
    - **Major Versions:** Always attach files to provide comprehensive context and
      resources.
 6. **Proper Use of Tags**
-    Use tags in accordance with their purpose. If there are no external requirements,
-    prioritize tags based on SemVer and any automated release systems integrated
-    into your workflow.
-    **Do not forget to use "set as the latest release" parameter upon creating release.**
+   Use tags in accordance with their purpose. If there are no external requirements,
+   prioritize tags based on SemVer and any automated release systems integrated
+   into your workflow.
+   **Do not forget to use "set as the latest release" parameter upon creating release.**
 
 ## Example of Release Notes Using This Template
 
@@ -116,3 +116,4 @@ Some popular plugins, issues, and implicit optimization problems (like spamming 
 > [!Important]
 > Read more about what has been introduced to the plugin in the special release note:
 > https://github.com/Falcion/UNITADE.md/blob/main/data/release/v3.0.0.md
+```

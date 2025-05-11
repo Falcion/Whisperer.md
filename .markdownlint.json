@@ -11,5 +11,8 @@
   },
   "MD013": {
     "code_blocks": false
+  },
+  "MD046": {
+    "style": "fenced"
   }
 }

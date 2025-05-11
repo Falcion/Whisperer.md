@@ -67,64 +67,64 @@ var __async = (__this, __arguments, generator) => {
   })
 }
 
-// prepare-template.ts
-var prepare_template_exports = {}
-__export(prepare_template_exports, {
+// index.ts
+var index_exports = {}
+__export(index_exports, {
+  CONFIG: () => CONFIG,
   LOCALE_LOGGER: () => LOCALE_LOGGER,
+  ask: () => ask,
   default: () => LOCALE_MODULE
 })
-module.exports = __toCommonJS(prepare_template_exports)
+module.exports = __toCommonJS(index_exports)
 var os = __toESM(require('os'))
 var path = __toESM(require('path'))
 var fs = __toESM(require('fs-extra'))
 var readline = __toESM(require('readline'))
 var colors = __toESM(require('colors/safe'))
-var PROMPTS = [
-  'DO YOU WANT TO UPDATE AND CHECK YOUR MANIFEST FOR THE SYNC',
-  'DO YOU WANT TO ADD WORDS TO SEARCH FOR THEM IN THE PROJECT',
-  'WRITE THE WORDS SEPARATED BY COMMA'
-]
 if (os.type() === 'Darwin') process.abort()
 var LOCALE_LOGGER = class {
+  constructor() {
+    /**
+     * A process ID which represents session of localized logger instance.
+     * @type {number}
+     */
+    __publicField(this, 'session_id', process.ppid)
+  }
   /**
    * Logs the info message.
-   * @param {...any} data - The data to be logged.
+   * @param {...unknown} data - The data to be logged.
    */
-  static info(...data) {
-    const datetime = /* @__PURE__ */ new Date().toLocaleString()
-    console.info(colors.blue(`[${datetime}] < ${this.session_id} > 	 - ${data.join(' ')}`))
+  info(...data) {
+    console.info(colors.blue(this.parseData(data)))
   }
   /**
    * Logs the warn message.
-   * @param {...any} data - The data to be logged.
+   * @param {...unknown} data - The data to be logged.
    */
-  static warn(...data) {
-    const datetime = /* @__PURE__ */ new Date().toLocaleString()
-    console.warn(colors.yellow(`[${datetime}] < ${this.session_id} > 	 - ${data.join(' ')}`))
+  warn(...data) {
+    console.warn(colors.yellow(this.parseData(data)))
   }
   /**
    * Logs the error message.
-   * @param {...any} data - The data to be logged.
+   * @param {...unknown} data - The data to be logged.
    */
-  static error(...data) {
-    const datetime = Date.now().toLocaleString()
-    console.error(colors.bgRed(colors.white(`[${datetime}] < ${this.session_id} > 	 - ${data}`)))
+  error(...data) {
+    console.error(colors.bgRed(colors.white(this.parseData(data))))
   }
   /**
    * Logs the success message.
-   * @param {...any} data - The data to be logged.
+   * @param {...unknown} data - The data to be logged.
    */
-  static success(...data) {
-    const datetime = Date.now().toLocaleString()
-    console.log(colors.green(`[${datetime}] < ${this.session_id} > 	 - ${data}`))
+  success(...data) {
+    console.log(colors.green(this.parseData(data)))
   }
   /**
    * Logs the message with custom color.
    * @param {(str: string) => string} color - The color function.
-   * @param {...any} data - The data to be logged.
+   * @param {...unknown} data - The data to be logged.
    */
-  static raw(color, ...data) {
-    console.debug(color(data.join(' ')))
+  raw(color, ...data) {
+    console.debug(color(this.parseData(data)))
   }
   /**
    * Formats a message with custom color.
@@ -132,15 +132,16 @@ var LOCALE_LOGGER = class {
    * @param {string} message - The message to be formatted.
    * @returns {string} The formatted message.
    */
-  static msg(color, message) {
+  msg(color, message) {
     return color(message)
   }
+  parseData(...data) {
+    const ctx = data
+      .map((item) => (typeof item === 'object' ? JSON.stringify(item, null, 2) : String(item)))
+      .join(' ')
+    return `[${/* @__PURE__ */ new Date().toLocaleString()}] < ${this.session_id} > 	 - ${ctx}`
+  }
 }
-/**
- * A process ID which represents session of localized logger instance.
- * @type {number}
- */
-__publicField(LOCALE_LOGGER, 'session_id', process.ppid)
 var LOCALE_MODULE = class {
   constructor() {
     /**
@@ -172,6 +173,7 @@ var LOCALE_MODULE = class {
       'PATTERNUGIT',
       'PATTERNUGIT.NET'
     ])
+    __publicField(this, 'LOGGER', new LOCALE_LOGGER())
   }
   /**
    * Updates the exclusion settings based on user input.
@@ -193,7 +195,9 @@ var LOCALE_MODULE = class {
     if (CONFIG.USE_GITIGNORE) {
       const gitignore = fs.readFileSync('.gitignore').toString().split('\n')
       gitignore.forEach((line) => {
-        if (line[0] !== '#' && line[0] !== '!') this.EXCLUDING_FOLDERS.push(line)
+        if (line[0] !== '#' && line[0] !== '!') {
+          this.EXCLUDING_FOLDERS.push(line)
+        }
       })
     }
     fs.ensureFileSync(CONFIG.LOGS_FILE)
@@ -213,8 +217,8 @@ var LOCALE_MODULE = class {
         const line = contents[i].toUpperCase()
         for (const target of data) {
           if (line.includes(target)) {
-            LOCALE_LOGGER.raw(colors.green, `Found "${target}" in L#${i} of: `)
-            LOCALE_LOGGER.raw(colors.cyan, filepath)
+            this.LOGGER.raw(colors.green, `Found "${target}" in L#${i} of: `)
+            this.LOGGER.raw(colors.cyan, filepath)
             stream.write(`Found "${target}" in L#${i} of:` + os.EOL)
             stream.write(`	${filepath}` + os.EOL)
           }
@@ -236,7 +240,9 @@ var LOCALE_MODULE = class {
           const itempath = path.join(directory, item)
           const itemstats = yield fs.stat(itempath)
           if (itemstats.isDirectory()) {
-            if (!this.EXCLUDING_FOLDERS.includes(item)) yield this.traverse(itempath)
+            if (!this.EXCLUDING_FOLDERS.includes(item)) {
+              yield this.traverse(itempath)
+            }
           } else if (itemstats.isFile()) {
             yield this.search(itempath, this.EXCLUDING_VALUES)
           } else {
@@ -244,7 +250,7 @@ var LOCALE_MODULE = class {
           }
         }
       } catch (err) {
-        LOCALE_LOGGER.error(err)
+        this.LOGGER.error(err)
       }
     })
   }
@@ -254,26 +260,34 @@ var CONFIG = {
   GITIGNORE_PATH: './.gitignore',
   LOGS_FILE: `preparations-${/* @__PURE__ */ new Date().toLocaleDateString()}.logs`
 }
-;(() => {
-  const RL = readline.createInterface({ input: process.stdin, output: process.stdout })
-  RL.setPrompt(PROMPTS[1])
-  const mod = new LOCALE_MODULE()
-  RL.question(
-    colors.bgBlue(colors.yellow('Add custom entries to path-finding script (Y/N/IGNORE): ')),
-    (mode) => {
+var ask = (rl, question) =>
+  __async(null, null, function* () {
+    return yield new Promise((resolve) => {
+      rl.question(question, resolve)
+    })
+  })
+void (() =>
+  __async(null, null, function* () {
+    const RL = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    })
+    try {
+      const finder = new LOCALE_MODULE()
+      const mode = yield ask(RL, colors.bgBlue(colors.yellow('Add custom entries (Y/N/IGNORE): ')))
       if (mode.toUpperCase() === 'Y') {
-        RL.question('Enter parameters (comma-separated): ', (params) => {
-          const diction = params.split(',').map((str) => str.trim())
-          mod.update(diction, mode.toUpperCase())
-          RL.close()
-          mod.traverse()
-        })
+        const params = yield ask(RL, 'Enter parameters (comma-separated): ')
+        const diction = params.split(',').map((str) => str.trim())
+        finder.update(diction, mode.toUpperCase())
+        yield finder.traverse()
       } else if (mode.toUpperCase() === 'N') {
-        RL.close()
-        mod.traverse()
-      } else {
-        RL.close()
+        yield finder.traverse()
       }
+    } catch (error) {
+      console.error(
+        colors.red(typeof error === 'object' ? JSON.stringify(error, null, 2) : String(error))
+      )
+    } finally {
+      RL.close()
     }
-  )
-})()
+  }))()

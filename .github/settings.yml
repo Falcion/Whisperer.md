@@ -1,10 +1,11 @@
 # # These settings are synced to GitHub by https://probot.github.io/apps/settings/
+
 repository:
   # The name of the repository. Changing this will rename the repository
   name: Whisperer.md
 
   # A short description of the repository that will show up on GitHub
-  description: A plugin for note-taking app Obsidian™ which allows you to play ambience music in vault and assign different tracks to files specifically
+  description: A plugin for note-taking app Obsidian which allows you to play ambience music in vault and assign different tracks to files specifically
 
   # A URL with more information about the repository
   homepage:
@@ -23,7 +24,7 @@ repository:
   has_projects: true
 
   # Either `true` to enable the wiki for this repository, `false` to disable it.
-  has_wiki: true
+  has_wiki: false
 
   # Either `true` to enable downloads for this repository, `false` to disable them.
   has_downloads: true
@@ -164,12 +165,6 @@ teams:
     permission: pull
   - name: triager
     permission: triage
-# Collaborators: give specific users access to this repository.
-# See https://docs.github.com/en/rest/reference/repos#add-a-repository-collaborator for available options
-collaborators:
-# Milestones: define milestones for Issues and Pull Requests
-# See https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones for available information
-milestones:
 environments:
   - name: production
     wait_timer: 5
@@ -189,6 +184,12 @@ environments:
           type: branch
         - name: v*
           type: tag
+# Collaborators: give specific users access to this repository.
+# See https://docs.github.com/en/rest/reference/repos#add-a-repository-collaborator for available options
+collaborators:
+# Milestones: define milestones for Issues and Pull Requests
+# See https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones for available information
+milestones:
 labels:
   - name: announcement
     color: '#0075ca'

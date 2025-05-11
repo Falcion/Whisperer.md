@@ -114,7 +114,7 @@ out/
 .env
 
 # Git repository infrastructure
-package-lock.json
+#package-lock.json
 manifest-backup.json
 
 # Obsidian

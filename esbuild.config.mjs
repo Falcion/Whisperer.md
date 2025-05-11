@@ -19,7 +19,7 @@ const context = await esbuild.context({
   banner: {
     js: banner
   },
-  entryPoints: ['./prepare-template.ts'],
+  entryPoints: ['./source/main.ts'],
   plugins: [
     sassPlugin(),
     glsl({
@@ -37,7 +37,7 @@ const context = await esbuild.context({
   logLevel: 'info',
   sourcemap: prod ? false : 'inline',
   treeShaking: true,
-  outfile: './prepare-template.js'
+  outfile: './index.js'
 })
 
 if (prod) {

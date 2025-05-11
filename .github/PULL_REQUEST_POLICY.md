@@ -1,11 +1,11 @@
-Learn about pull requests (hereinafter referred to as “PR” or “PRs” in the plural)
+Learn about pull requests (hereinafter referred to as "PR" or "PRs" in the plural)
 on this repository and our policy around them, PRs communicate changes to a branch
 in a repository. Once a pull request is opened, you can review changes with collaborators
 and add follow-up commits.
 
 # About pull requests
 
-A pull request (or “PR”) is a proposal to merge a set of changes from one branch
+A pull request (or "PR") is a proposal to merge a set of changes from one branch
 into another, in a PR, collaborators can review and discuss the proposed set of
 changes before they integrate the changes into the main codebase.
 
@@ -23,7 +23,7 @@ and the content in the target branch.
 > - Be very careful when force pushing commits to a pull request, force pushing
 >   changes the repository history and can corrupt your pull request, if other collaborators
 >   branch the project before a force push, the force push may overwrite commits
-    that collaborators based their work on.
+>   that collaborators based their work on.
 
 For more information about PRs check:
 <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests/>

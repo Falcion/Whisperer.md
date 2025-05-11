@@ -16,5 +16,5 @@ root = true
     indent_style = space
 [*.sh]
     end_of_line = lf
-[.husky//*-*]
+[.husky/*-*]
     end_of_line = lf

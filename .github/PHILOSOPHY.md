@@ -23,7 +23,7 @@ to become a project for other projects and allow people who are not interested i
 DevOps, writing basic documentation, etc. to cross the threshold of open-source
 frameworks and professional features and do what most programmers love - programming.
 
-All those things that form the basis of the project, its life cycle - are an integral
+All those things that form the basis of the project, its lifecycle - are an integral
 part of the project itself, but they do not necessarily have to be "independent",
 "brilliant", self-written - their miracle is that they can be taken from others and
 shared. PATTERNU tries to "comprehend" such a thought in the absolute, including
@@ -52,7 +52,7 @@ PATTERNU aims to make the first steps in project development as easy as possible
 ### 2. **No more than a template**
 
 PATTERNU does not try to replace your project's business processes or impose strict
-frameworks. This is exactly a *template* that offers:
+frameworks. This is exactly a _template_ that offers:
 
 - Basic tools and recommendations for a start.
 - Documentation and examples for understanding.
@@ -61,7 +61,7 @@ frameworks. This is exactly a *template* that offers:
 ### 3. **Philosophy for other projects**
 
 PATTERNU realizes that not every project needs its own philosophy. Instead, it
-provides a *philosophy template* that can be used as a basis:
+provides a _philosophy template_ that can be used as a basis:
 
 - A project only needs a goal and functionality.
 - PATTERNU takes care of the philosophical aspects, allowing the developer to
@@ -77,7 +77,7 @@ PATTERNU supports the concept of sharing:
 
 ## Why do we need applied philosophy?
 
-PATTERNU is based on the idea of ​​*applied philosophy*, avoiding complex analytical
+PATTERNU is based on the idea of ​​_applied philosophy_, avoiding complex analytical
 theories and metaphysics. We focus on:
 
 - A worldview that helps organize projects.
@@ -86,14 +86,14 @@ theories and metaphysics. We focus on:
 ## How to use PATTERNU?
 
 1. **For developers who want to focus on programming.**
-PATTERNU removes the need for you to do basic project setup.
+   PATTERNU removes the need for you to do basic project setup.
 
 2. **For projects that want simplified management.**
-Use built-in templates for CI/CD, documentation, and repository organization.
+   Use built-in templates for CI/CD, documentation, and repository organization.
 
 3. **For open-source enthusiasts.**
-PATTERNU helps you overcome the entry threshold by providing ready-made tools for
-publishing and maintaining a project.
+   PATTERNU helps you overcome the entry threshold by providing ready-made tools
+   for publishing and maintaining a project.
 
 ## Conclusion
 

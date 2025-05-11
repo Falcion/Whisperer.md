@@ -1,21 +1,13 @@
 {
   "repository": {
     "name": "Whisperer.md",
-    "description": "A plugin for note-taking app Obsidian™ which allows you to play ambience music in vault and assign different tracks to files specifically",
+    "description": "A plugin for note-taking app Obsidian which allows you to play ambience music in vault and assign different tracks to files specifically",
     "homepage": "",
-    "topics": [
-      "plugin",
-      "music",
-      "files",
-      "ambience",
-      "typescript",
-      "obsidian",
-      "obsidian-plugin"
-    ],
+    "topics": ["plugin", "music", "files", "ambience", "typescript", "obsidian", "obsidian-plugin"],
     "private": false,
     "has_issues": true,
     "has_projects": true,
-    "has_wiki": true,
+    "has_wiki": false,
     "has_downloads": true,
     "default_branch": "main",
     "allow_squash_merge": true,

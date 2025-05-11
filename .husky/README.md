@@ -26,9 +26,8 @@ and ones with OS/desktop clients of Git.
 > Also, check your "%PATH% → Node.js/bin/" paths in environment variables context:\
 >
 > - Windows users, if you have everything set up and installed, check this comment
-
-    from same issue:\
-
+>   from same issue:\
+>
 > <https://github.com/desktop/desktop/issues/12562#issuecomment-1007154382>
 
 ## Error codes within usage

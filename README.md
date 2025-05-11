@@ -184,6 +184,11 @@ More about plugin's functionality and how to use it, read at the wiki:\
 - [x] Publish it on OBSIDIAN's plugins registry;
 - [ ] Write a wiki for the project;
 - [ ] Make more advanced controls over music in the vault and files;
+  - [x] Add ability to debug iframes;
+- [ ] Rewrite project to use native APIs of Youtube/Soundcloud/audio-element:
+  - [ ] Youtube's API Player;
+  - [ ] Soundcloud's API Player;
+  - [ ] Advanced local audio player (instead of simplificated audio-tag);
 
 <p align="right"><a href="#readme-top" title="Back to the top of README">[^]</a></p>
 
