@@ -1,4 +1,4 @@
-name: Mocha.js CI - tests
+name: Jest CI
 
 on:
   push:

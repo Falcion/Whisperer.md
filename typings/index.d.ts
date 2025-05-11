@@ -28,32 +28,32 @@ declare module '@patternu/preparation' {
      * Log informational message
      * @param data Flexible arguments to log
      */
-    info(...data: unknown[]): void
+    info (...data: unknown[]): void
 
     /**
      * Log warning message
      * @param data Flexible arguments to log
      */
-    warn(...data: unknown[]): void
+    warn (...data: unknown[]): void
 
     /**
      * Log error message
      * @param data Flexible arguments to log
      */
-    error(...data: unknown[]): void
+    error (...data: unknown[]): void
 
     /**
      * Log success message
      * @param data Flexible arguments to log
      */
-    success(...data: unknown[]): void
+    success (...data: unknown[]): void
 
     /**
      * Raw formatted log output
      * @param color Colorization function
      * @param data Flexible arguments to log
      */
-    raw(color: (str: string) => string, ...data: unknown[]): void
+    raw (color: (str: string) => string, ...data: unknown[]): void
 
     /**
      * Create colored message string
@@ -61,7 +61,7 @@ declare module '@patternu/preparation' {
      * @param message Message to format
      * @returns Colored message string
      */
-    msg(color: (str: string) => string, message: string): string
+    msg (color: (str: string) => string, message: string): string
   }
 
   /**
@@ -72,7 +72,7 @@ declare module '@patternu/preparation' {
     public ROOT_DIRECTORY: string
     /** Logger instance */
     public readonly LOGGER: LOCALE_LOGGER
-    private EXCLUDING_FOLDERS: string[]
+    private readonly EXCLUDING_FOLDERS: string[]
     private readonly EXCLUDING_VALUES: string[]
 
     /**
@@ -80,20 +80,20 @@ declare module '@patternu/preparation' {
      * @param entries Entries to add to exclusion lists
      * @param actions Update action type (Y/N)
      */
-    public update(entries: string[], actions: string): void
+    public update (entries: string[], actions: string): void
 
     /**
      * Search file contents for target strings
      * @param filepath Path to search
      * @param data Target strings to find
      */
-    public search(filepath: string, data: string[]): Promise<void>
+    public search (filepath: string, data: string[]): Promise<void>
 
     /**
      * Recursive directory traversal
      * @param directory Starting directory
      */
-    public traverse(directory?: string): Promise<void>
+    public traverse (directory?: string): Promise<void>
   }
 
   /**
@@ -102,5 +102,5 @@ declare module '@patternu/preparation' {
    * @param question Prompt to display
    * @returns Promise resolving to user input
    */
-  export function ask(rl: readline.Interface, question: string): Promise<string>
+  export function ask (rl: readline.Interface, question: string): Promise<string>
 }

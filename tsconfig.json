@@ -18,5 +18,5 @@
     "sourceMap": false
   },
   "exclude": ["node_modules", "out", "git", "venv"],
-  "include": ["*.ts", "**/*.ts"]
+  "include": ["*.ts", "**/*.ts", "jest.setup.ts"]
 }

@@ -1,8 +1,10 @@
+const isMockOrTest = (f) =>
+  f.includes('__mocks__') || f.endsWith('.test.ts') || f.endsWith('.spec.ts')
+
 /**
  * @filename: lint-staged.config.js
  * @type {import('lint-staged').Configuration}
  */
-
 export default {
   /** Javascript codefiles: */
   '*.{mjs,js,jsx,cjs}': (files) => {
@@ -24,7 +26,7 @@ export default {
     const found = files
       .filter(
         (f) =>
-          f.endsWith('.ts') ||
+          (!isMockOrTest(f) && f.endsWith('.ts')) ||
           f.endsWith('.tsx') ||
           f.endsWith('.mts') ||
           (f.endsWith('.cts') && !f.endsWith('.d.ts'))
