@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-undef */
 /* eslint-env browser, jest */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import WhispererSettingsTab from 'source/settings'
 import Whisperer from 'source/main'
 import { App } from 'obsidian'

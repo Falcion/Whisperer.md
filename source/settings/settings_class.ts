@@ -1,5 +1,5 @@
 import { Setting, TextAreaComponent } from 'obsidian'
-import Whisperer from 'source/main'
+import Whisperer from './../main'
 
 export default class SettingsConstructor {
   private defaults?: {
@@ -19,13 +19,13 @@ export default class SettingsConstructor {
   public plugin: Whisperer
   public containerEl: HTMLElement
 
-  constructor(_plugin: Whisperer, _containerEl: HTMLElement) {
+  constructor (_plugin: Whisperer, _containerEl: HTMLElement) {
     this.plugin = _plugin
     this.containerEl = _containerEl
   }
 
-  public get SETTING_AMBIENCE(): Setting {
-    if (!this._SETTING_AMBIENCE) {
+  public get SETTING_AMBIENCE (): Setting {
+    if (this._SETTING_AMBIENCE == null) {
       this._SETTING_AMBIENCE = new Setting(this.containerEl)
         .setName('Vault ambience:')
         .setDesc(
@@ -50,11 +50,11 @@ export default class SettingsConstructor {
         })
     }
 
-    return this._SETTING_AMBIENCE!
+    return this._SETTING_AMBIENCE
   }
 
-  public get SETTING_VAULT_PATH_TITLE(): Setting {
-    if (!this._SETTING_VAULT_PATH_TITLE) {
+  public get SETTING_VAULT_PATH_TITLE (): Setting {
+    if (this._SETTING_VAULT_PATH_TITLE == null) {
       this._SETTING_VAULT_PATH_TITLE = new Setting(this.containerEl)
         .setName("Path/URL to the audio of Vault's ambience (supports YouTube, SoundCloud):")
         .setDesc(
@@ -62,11 +62,11 @@ export default class SettingsConstructor {
         )
     }
 
-    return this._SETTING_VAULT_PATH_TITLE!
+    return this._SETTING_VAULT_PATH_TITLE
   }
 
-  public get SETTING_VAULT_PATH_INPUT(): TextAreaComponent {
-    if (!this._SETTING_VAULT_PATH_INPUT) {
+  public get SETTING_VAULT_PATH_INPUT (): TextAreaComponent {
+    if (this._SETTING_VAULT_PATH_INPUT == null) {
       const result = new TextAreaComponent(this.containerEl)
         .setPlaceholder('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         .setValue(this.plugin.settings.vault_ambience_path)
@@ -85,11 +85,11 @@ export default class SettingsConstructor {
       this._SETTING_VAULT_PATH_INPUT = result
     }
 
-    return this._SETTING_VAULT_PATH_INPUT!
+    return this._SETTING_VAULT_PATH_INPUT
   }
 
-  public get SETTING_AMBIENCE_PER_FILE(): Setting {
-    if (!this._SETTING_AMBIENCE_PER_FILE) {
+  public get SETTING_AMBIENCE_PER_FILE (): Setting {
+    if (this._SETTING_AMBIENCE_PER_FILE == null) {
       this._SETTING_AMBIENCE_PER_FILE = new Setting(this.containerEl)
         .setName('Ambience per files:')
         .setDesc(
@@ -109,11 +109,11 @@ export default class SettingsConstructor {
         })
     }
 
-    return this._SETTING_AMBIENCE_PER_FILE!
+    return this._SETTING_AMBIENCE_PER_FILE
   }
 
-  public get SETTING_AMBIENCE_PER_FILE_COMMENT(): Setting {
-    if (!this._SETTING_AMBIENCE_PER_FILE_COMMENT) {
+  public get SETTING_AMBIENCE_PER_FILE_COMMENT (): Setting {
+    if (this._SETTING_AMBIENCE_PER_FILE_COMMENT == null) {
       this._SETTING_AMBIENCE_PER_FILE_COMMENT = new Setting(this.containerEl)
         .setName('')
         .setDesc(
@@ -121,11 +121,11 @@ export default class SettingsConstructor {
         )
     }
 
-    return this._SETTING_AMBIENCE_PER_FILE_COMMENT!
+    return this._SETTING_AMBIENCE_PER_FILE_COMMENT
   }
 
-  public get SETTING_MUSIC_VOLUME(): Setting {
-    if (!this._SETTING_MUSICE_VOLUME) {
+  public get SETTING_MUSIC_VOLUME (): Setting {
+    if (this._SETTING_MUSICE_VOLUME == null) {
       this._SETTING_MUSICE_VOLUME = new Setting(this.containerEl)
         .setName('Music volume')
         .setDesc(
@@ -145,16 +145,16 @@ export default class SettingsConstructor {
                 music_volume: value
               }
 
-              this.plugin.updateVolumeSettings(next)
+              await this.plugin.updateVolumeSettings(next)
             })
         })
     }
 
-    return this._SETTING_MUSICE_VOLUME!
+    return this._SETTING_MUSICE_VOLUME
   }
 
-  public get SETTING_DEBUG_FRAMES(): Setting {
-    if (!this._SETTING_DEBUG_FRAMES) {
+  public get SETTING_DEBUG_FRAMES (): Setting {
+    if (this._SETTING_DEBUG_FRAMES == null) {
       this._SETTING_DEBUG_FRAMES = new Setting(this.containerEl)
         .setName('Debug frames:')
         .setDesc(
@@ -172,26 +172,24 @@ export default class SettingsConstructor {
         })
     }
 
-    return this._SETTING_DEBUG_FRAMES!
+    return this._SETTING_DEBUG_FRAMES
   }
 
-  public static updateDisplays(elements: (Setting | TextAreaComponent)[], values: boolean[]): void {
-    if (elements.length !== values.length)
-      throw new Error('Elements and their values both are out of range in some other ways.')
+  public static updateDisplays (elements: Array<Setting | TextAreaComponent>, values: boolean[]): void {
+    if (elements.length !== values.length) { throw new Error('Elements and their values both are out of range in some other ways.') }
 
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i]
 
       if (element instanceof Setting) element.settingEl.style.display = values[i] ? 'block' : 'none'
-      if (element instanceof TextAreaComponent)
-        element.inputEl.style.display = values[i] ? 'block' : 'none'
+      if (element instanceof TextAreaComponent) { element.inputEl.style.display = values[i] ? 'block' : 'none' }
     }
   }
 
-  private _updateState(data: TextAreaComponent, prev: boolean, next: boolean): void {
-    if (prev !== next)
+  private _updateState (data: TextAreaComponent, prev: boolean, next: boolean): void {
+    if (prev !== next) {
       if (prev) {
-        if (!this.defaults) {
+        if (this.defaults == null) {
           this.defaults = {
             color: data.inputEl.style.color,
             borderColor: data.inputEl.style.borderColor,
@@ -202,10 +200,11 @@ export default class SettingsConstructor {
         data.inputEl.style.color = 'red'
         data.inputEl.style.borderColor = 'red'
         data.inputEl.style.borderWidth = '4px'
-      } else if (this.defaults) {
+      } else if (this.defaults != null) {
         data.inputEl.style.color = this.defaults.color
         data.inputEl.style.borderColor = this.defaults.borderColor
         data.inputEl.style.borderWidth = this.defaults.borderWidth
       }
+    }
   }
 }

@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-undef */
 /* eslint-env browser, jest */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import PlayerPerFile from 'source/player/player_per_file'
 import Whisperer from 'source/main'
 import { TFile } from 'obsidian'

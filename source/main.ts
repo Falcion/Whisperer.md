@@ -24,7 +24,7 @@
  * Any code and/or API associated with OBSIDIAN behaves as stated in their distribution policy.
  */
 
-import { Plugin, TFile } from 'obsidian'
+import { Plugin } from 'obsidian'
 
 import WhispererSettingsTab from './settings'
 import { WHISPERER_SETTINGS, DEFAULT_SETTINGS } from './settings/settings'
@@ -35,18 +35,18 @@ export default class Whisperer extends Plugin {
   private _settings: WHISPERER_SETTINGS = DEFAULT_SETTINGS
 
   public players: HTMLElement[] = []
-  public fileAmbiencePlayers: Map<string, { player: HTMLElement; position: number }> = new Map()
+  public fileAmbiencePlayers: Map<string, { player: HTMLElement, position: number }> = new Map()
   public activeFile: string | null = null
 
   public playerPerFile: PlayerPerFile = new PlayerPerFile(this)
   public playerPerGlobal: PlayerPerGlobal = new PlayerPerGlobal(this)
 
-  public get settings(): WHISPERER_SETTINGS {
+  public get settings (): WHISPERER_SETTINGS {
     return this._settings
   }
 
-  async onload(): Promise<void> {
-    super.onload()
+  async onload (): Promise<void> {
+    await super.onload()
 
     await this.loadSettings()
 
@@ -57,24 +57,22 @@ export default class Whisperer extends Plugin {
 
     const container = document.getElementsByClassName('obsidian-app')[0]
 
-    if (container) {
-      const script = document.createElement('script')
+    const script = document.createElement('script')
 
-      script.src = 'https://w.soundcloud.com/player/api.js'
-      script.id = 'whisperer-md-sc-widget'
+    script.src = 'https://w.soundcloud.com/player/api.js'
+    script.id = 'whisperer-md-sc-widget'
 
-      container.appendChild(script)
-    }
+    container.appendChild(script)
 
     this.apply()
   }
 
-  async onunload(): Promise<void> {
+  async onunload (): Promise<void> {
     super.onunload()
 
     const script = document.getElementById('whisperer-md-sc-widget') as HTMLScriptElement | null
 
-    if (script) {
+    if (script != null) {
       script.src = ''
       script.remove()
     }
@@ -82,11 +80,11 @@ export default class Whisperer extends Plugin {
     this.unapply()
   }
 
-  async loadSettings(): Promise<void> {
+  async loadSettings (): Promise<void> {
     this._settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData())
   }
 
-  async updateSettings(settings: WHISPERER_SETTINGS): Promise<void> {
+  async updateSettings (settings: WHISPERER_SETTINGS): Promise<void> {
     this.unapply()
 
     this._settings = settings
@@ -96,9 +94,9 @@ export default class Whisperer extends Plugin {
     this.apply()
   }
 
-  async updateVolumeSettings(settings: WHISPERER_SETTINGS): Promise<void> {
+  async updateVolumeSettings (settings: WHISPERER_SETTINGS): Promise<void> {
     if (this.players.length === 0) {
-      this.updateSettings(settings)
+      await this.updateSettings(settings)
     } else {
       this._settings = settings
 
@@ -111,8 +109,8 @@ export default class Whisperer extends Plugin {
 
           // Handle YouTube player
           try {
-            const url = new URL(iframe.src);
-            const allowedYouTubeHosts = ['youtube.com', 'www.youtube.com', 'youtu.be'];
+            const url = new URL(iframe.src)
+            const allowedYouTubeHosts = ['youtube.com', 'www.youtube.com', 'youtu.be']
             if (allowedYouTubeHosts.includes(url.hostname)) {
               iframe.contentWindow?.postMessage(
                 JSON.stringify({
@@ -121,16 +119,16 @@ export default class Whisperer extends Plugin {
                   args: [this.settings.music_volume]
                 }),
                 '*'
-              );
+              )
             }
           } catch (e) {
-            console.error('Invalid iframe src URL:', iframe.src);
+            console.error('Invalid iframe src URL:', iframe.src, e)
           }
 
           // Handle SoundCloud player
           try {
-            const url = new URL(iframe.src);
-            const allowedSoundCloudHosts = ['soundcloud.com', 'w.soundcloud.com'];
+            const url = new URL(iframe.src)
+            const allowedSoundCloudHosts = ['soundcloud.com', 'w.soundcloud.com']
             if (allowedSoundCloudHosts.includes(url.hostname)) {
               // SoundCloud iframe API supports message listeners for certain features
               iframe.contentWindow?.postMessage(
@@ -139,23 +137,23 @@ export default class Whisperer extends Plugin {
                   value: this.settings.music_volume / 100
                 }),
                 'https://w.soundcloud.com'
-              );
+              )
             }
           } catch (e) {
-            console.error('Invalid iframe src URL:', iframe.src);
+            console.error('Invalid iframe src URL:', iframe.src, e)
           }
         } else if (player.tagName === 'AUDIO') {
           // Handle local audio player
           const audio = player as HTMLAudioElement
-          audio.volume = (this.settings.music_volume || 50) / 100
+          audio.volume = (this.settings.music_volume ?? 50) / 100
         }
       })
     }
   }
 
-  async updateVisibleSettings(settings: WHISPERER_SETTINGS): Promise<void> {
+  async updateVisibleSettings (settings: WHISPERER_SETTINGS): Promise<void> {
     if (this.players.length === 0) {
-      this.updateSettings(settings)
+      await this.updateSettings(settings)
     } else {
       this._settings = settings
 
@@ -168,11 +166,11 @@ export default class Whisperer extends Plugin {
     }
   }
 
-  public unapply(): void {
+  public unapply (): void {
     this.players.forEach((player) => {
       player.remove()
       const iframe = player.querySelector('iframe')
-      if (iframe) {
+      if (iframe != null) {
         iframe.src = '' // Prevent memory leaks
       }
     })
@@ -184,7 +182,7 @@ export default class Whisperer extends Plugin {
     }
   }
 
-  public apply(): void {
+  public apply (): void {
     if (this.settings.vault_ambience) this.playerPerGlobal.playAmbience()
   }
 }

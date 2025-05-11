@@ -97,7 +97,7 @@ var SettingsConstructor = class _SettingsConstructor {
     this.containerEl = _containerEl
   }
   get SETTING_AMBIENCE() {
-    if (this._SETTING_AMBIENCE == null) {
+    if (!this._SETTING_AMBIENCE) {
       this._SETTING_AMBIENCE = new import_obsidian.Setting(this.containerEl)
         .setName('Vault ambience:')
         .setDesc(
@@ -122,7 +122,7 @@ var SettingsConstructor = class _SettingsConstructor {
     return this._SETTING_AMBIENCE
   }
   get SETTING_VAULT_PATH_TITLE() {
-    if (this._SETTING_VAULT_PATH_TITLE == null) {
+    if (!this._SETTING_VAULT_PATH_TITLE) {
       this._SETTING_VAULT_PATH_TITLE = new import_obsidian.Setting(this.containerEl)
         .setName("Path/URL to the audio of Vault's ambience (supports YouTube, SoundCloud):")
         .setDesc(
@@ -132,7 +132,7 @@ var SettingsConstructor = class _SettingsConstructor {
     return this._SETTING_VAULT_PATH_TITLE
   }
   get SETTING_VAULT_PATH_INPUT() {
-    if (this._SETTING_VAULT_PATH_INPUT == null) {
+    if (!this._SETTING_VAULT_PATH_INPUT) {
       const result = new import_obsidian.TextAreaComponent(this.containerEl)
         .setPlaceholder('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         .setValue(this.plugin.settings.vault_ambience_path)
@@ -149,7 +149,7 @@ var SettingsConstructor = class _SettingsConstructor {
     return this._SETTING_VAULT_PATH_INPUT
   }
   get SETTING_AMBIENCE_PER_FILE() {
-    if (this._SETTING_AMBIENCE_PER_FILE == null) {
+    if (!this._SETTING_AMBIENCE_PER_FILE) {
       this._SETTING_AMBIENCE_PER_FILE = new import_obsidian.Setting(this.containerEl)
         .setName('Ambience per files:')
         .setDesc(
@@ -170,7 +170,7 @@ var SettingsConstructor = class _SettingsConstructor {
     return this._SETTING_AMBIENCE_PER_FILE
   }
   get SETTING_AMBIENCE_PER_FILE_COMMENT() {
-    if (this._SETTING_AMBIENCE_PER_FILE_COMMENT == null) {
+    if (!this._SETTING_AMBIENCE_PER_FILE_COMMENT) {
       this._SETTING_AMBIENCE_PER_FILE_COMMENT = new import_obsidian.Setting(this.containerEl)
         .setName('')
         .setDesc(
@@ -180,7 +180,7 @@ var SettingsConstructor = class _SettingsConstructor {
     return this._SETTING_AMBIENCE_PER_FILE_COMMENT
   }
   get SETTING_MUSIC_VOLUME() {
-    if (this._SETTING_MUSICE_VOLUME == null) {
+    if (!this._SETTING_MUSICE_VOLUME) {
       this._SETTING_MUSICE_VOLUME = new import_obsidian.Setting(this.containerEl)
         .setName('Music volume')
         .setDesc(
@@ -207,7 +207,7 @@ var SettingsConstructor = class _SettingsConstructor {
     return this._SETTING_MUSICE_VOLUME
   }
   get SETTING_DEBUG_FRAMES() {
-    if (this._SETTING_DEBUG_FRAMES == null) {
+    if (!this._SETTING_DEBUG_FRAMES) {
       this._SETTING_DEBUG_FRAMES = new import_obsidian.Setting(this.containerEl)
         .setName('Debug frames:')
         .setDesc(
@@ -227,22 +227,20 @@ var SettingsConstructor = class _SettingsConstructor {
     return this._SETTING_DEBUG_FRAMES
   }
   static updateDisplays(elements, values) {
-    if (elements.length !== values.length) {
+    if (elements.length !== values.length)
       throw new Error('Elements and their values both are out of range in some other ways.')
-    }
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i]
       if (element instanceof import_obsidian.Setting)
         element.settingEl.style.display = values[i] ? 'block' : 'none'
-      if (element instanceof import_obsidian.TextAreaComponent) {
+      if (element instanceof import_obsidian.TextAreaComponent)
         element.inputEl.style.display = values[i] ? 'block' : 'none'
-      }
     }
   }
   _updateState(data, prev, next) {
     if (prev !== next) {
       if (prev) {
-        if (this.defaults == null) {
+        if (!this.defaults) {
           this.defaults = {
             color: data.inputEl.style.color,
             borderColor: data.inputEl.style.borderColor,
@@ -252,7 +250,7 @@ var SettingsConstructor = class _SettingsConstructor {
         data.inputEl.style.color = 'red'
         data.inputEl.style.borderColor = 'red'
         data.inputEl.style.borderWidth = '4px'
-      } else if (this.defaults != null) {
+      } else if (this.defaults) {
         data.inputEl.style.color = this.defaults.color
         data.inputEl.style.borderColor = this.defaults.borderColor
         data.inputEl.style.borderWidth = this.defaults.borderWidth
@@ -328,7 +326,7 @@ var PlayerPerFile = class {
   handleFileOpen(file) {
     return __async(this, null, function* () {
       var _a
-      if (file == null) return
+      if (!file) return
       if (!this.plugin.settings.ambience_per_files) return
       const fileCache = this.plugin.app.metadataCache.getFileCache(file)
       const musicPath =
@@ -345,9 +343,9 @@ var PlayerPerFile = class {
           this.pauseFileAmbience(this.plugin.activeFile)
         }
         if (
-          document
+          !document
             .getElementsByClassName('obsidian-app')[0]
-            .querySelector('.vault-ambience-player') == null
+            .querySelector('.vault-ambience-player')
         ) {
           if (this.plugin.settings.vault_ambience) this.plugin.playerPerGlobal.playAmbience()
         }
@@ -397,7 +395,7 @@ var PlayerPerFile = class {
       player.appendChild(audio)
       audio.addEventListener('timeupdate', () => {
         const playbackData = this.plugin.fileAmbiencePlayers.get(filePath)
-        if (playbackData != null) {
+        if (playbackData) {
           playbackData.position = audio.currentTime
         }
       })
@@ -408,7 +406,7 @@ var PlayerPerFile = class {
   pauseFileAmbience(filePath) {
     var _a, _b
     const playbackData = this.plugin.fileAmbiencePlayers.get(filePath)
-    if (playbackData == null) return
+    if (!playbackData) return
     const { player } = playbackData
     if (player instanceof HTMLAudioElement) {
       playbackData.position = player.currentTime
@@ -442,33 +440,29 @@ var PlayerPerFile = class {
 
 // source/player/factory/player_factory.ts
 var PlayerFactory = class {
-  constructor(_plugin) {
-    __publicField(this, 'plugin')
-    this.plugin = _plugin
-  }
-  createPlayer(player, type) {
+  static createPlayer(plugin, player, type) {
     switch (type) {
       case 'youtube':
       case 'yt':
       case 'ytube':
-        this.setupYouTubePlayer(player)
+        this.setupYouTubePlayer(plugin, player)
         break
       case 'sc':
       case 'scloud':
       case 'soundcloud':
-        this.setupSoundCloudPlayer(player)
+        this.setupSoundCloudPlayer(plugin, player)
         break
       case 'local':
       case 'audio':
       case 'fs':
-        this.setupLocalAudioPlayer(player)
+        this.setupLocalAudioPlayer(plugin, player)
         break
       default:
         throw new Error('Got an unknown type of player!')
     }
   }
-  setupYouTubePlayer(player) {
-    const videoId = extractId(this.plugin.settings.vault_ambience_path)
+  static setupYouTubePlayer(plugin, player) {
+    const videoId = extractId(plugin.settings.vault_ambience_path)
     const iframe = document.createElement('iframe')
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&enablejsapi=1&playlist=${videoId}`
     iframe.width = '300'
@@ -477,7 +471,7 @@ var PlayerFactory = class {
     iframe.allowFullscreen = true
     iframe.onload = () => {
       var _a
-      const volume = this.plugin.settings.music_volume || 50
+      const volume = plugin.settings.music_volume || 50
       ;(_a = iframe.contentWindow) == null
         ? void 0
         : _a.postMessage(
@@ -491,8 +485,8 @@ var PlayerFactory = class {
     }
     player.appendChild(iframe)
   }
-  setupSoundCloudPlayer(player) {
-    const embedUrl = getEmbedUrl(this.plugin.settings.vault_ambience_path)
+  static setupSoundCloudPlayer(plugin, player) {
+    const embedUrl = getEmbedUrl(plugin.settings.vault_ambience_path)
     const apiEnabledUrl = `${embedUrl}&visual=true&show_artwork=false`
     const iframe = document.createElement('iframe')
     iframe.src = apiEnabledUrl
@@ -501,18 +495,16 @@ var PlayerFactory = class {
     iframe.allow = 'autoplay'
     player.appendChild(iframe)
   }
-  setupLocalAudioPlayer(player) {
+  static setupLocalAudioPlayer(plugin, player) {
     const audio = document.createElement('audio')
-    audio.src = this.plugin.app.vault.adapter.getResourcePath(
-      this.plugin.settings.vault_ambience_path
-    )
+    audio.src = plugin.app.vault.adapter.getResourcePath(plugin.settings.vault_ambience_path)
     audio.controls = true
     audio.autoplay = true
     audio.loop = true
-    audio.volume = (this.plugin.settings.music_volume || 50) / 100
+    audio.volume = (plugin.settings.music_volume || 50) / 100
     audio.addEventListener('volumechange', () => {
-      this.plugin.settings.music_volume = audio.volume * 100
-      this.plugin.saveData(this.plugin.settings)
+      plugin.settings.music_volume = audio.volume * 100
+      plugin.saveData(plugin.settings)
     })
     player.appendChild(audio)
   }
@@ -528,7 +520,7 @@ var PlayerPerGlobal = class {
     const container = document.getElementsByClassName('obsidian-app')[0]
     if (!container) return
     let player = container.querySelector('.vault-ambience-player')
-    if (player != null) player.remove()
+    if (player) player.remove()
     if (container.getElementsByClassName('file-ambience-player').length > 0) return
     player = document.createElement('div')
     player.className = 'vault-ambience-player'
@@ -537,13 +529,12 @@ var PlayerPerGlobal = class {
       const url = new URL(this.plugin.settings.vault_ambience_path)
       const allowedYouTubeHosts = ['youtube.com', 'youtu.be']
       const allowedSoundCloudHosts = ['soundcloud.com']
-      const playerFactory = new PlayerFactory(this.plugin)
       if (allowedYouTubeHosts.includes(url.host)) {
-        playerFactory.createPlayer(player, 'yt')
+        PlayerFactory.createPlayer(this.plugin, player, 'yt')
       } else if (allowedSoundCloudHosts.includes(url.host)) {
-        playerFactory.createPlayer(player, 'sc')
+        PlayerFactory.createPlayer(this.plugin, player, 'sc')
       }
-      playerFactory.createPlayer(player, 'local')
+      PlayerFactory.createPlayer(this.plugin, player, 'local')
     }
     container.appendChild(player)
     this.plugin.players.push(player)
@@ -566,17 +557,19 @@ var Whisperer = class _Whisperer extends import_obsidian3.Plugin {
   }
   onload() {
     return __async(this, null, function* () {
-      yield __superGet(_Whisperer.prototype, this, 'onload').call(this)
+      __superGet(_Whisperer.prototype, this, 'onload').call(this)
       yield this.loadSettings()
       this.addSettingTab(new WhispererSettingsTab(this.app, this))
       this.registerEvent(
         this.app.workspace.on('file-open', this.playerPerFile.handleFileOpen.bind(this))
       )
       const container = document.getElementsByClassName('obsidian-app')[0]
-      const script = document.createElement('script')
-      script.src = 'https://w.soundcloud.com/player/api.js'
-      script.id = 'whisperer-md-sc-widget'
-      container.appendChild(script)
+      if (container) {
+        const script = document.createElement('script')
+        script.src = 'https://w.soundcloud.com/player/api.js'
+        script.id = 'whisperer-md-sc-widget'
+        container.appendChild(script)
+      }
       this.apply()
     })
   }
@@ -584,7 +577,7 @@ var Whisperer = class _Whisperer extends import_obsidian3.Plugin {
     return __async(this, null, function* () {
       __superGet(_Whisperer.prototype, this, 'onunload').call(this)
       const script = document.getElementById('whisperer-md-sc-widget')
-      if (script != null) {
+      if (script) {
         script.src = ''
         script.remove()
       }
@@ -607,7 +600,7 @@ var Whisperer = class _Whisperer extends import_obsidian3.Plugin {
   updateVolumeSettings(settings) {
     return __async(this, null, function* () {
       if (this.players.length === 0) {
-        yield this.updateSettings(settings)
+        this.updateSettings(settings)
       } else {
         this._settings = settings
         yield this.saveData(this.settings)
@@ -652,7 +645,7 @@ var Whisperer = class _Whisperer extends import_obsidian3.Plugin {
             }
           } else if (player.tagName === 'AUDIO') {
             const audio = player
-            audio.volume = (this.settings.music_volume | 50) / 100
+            audio.volume = (this.settings.music_volume || 50) / 100
           }
         })
       }
@@ -661,7 +654,7 @@ var Whisperer = class _Whisperer extends import_obsidian3.Plugin {
   updateVisibleSettings(settings) {
     return __async(this, null, function* () {
       if (this.players.length === 0) {
-        yield this.updateSettings(settings)
+        this.updateSettings(settings)
       } else {
         this._settings = settings
         yield this.saveData(this.settings)
@@ -676,7 +669,7 @@ var Whisperer = class _Whisperer extends import_obsidian3.Plugin {
     this.players.forEach((player) => {
       player.remove()
       const iframe = player.querySelector('iframe')
-      if (iframe != null) {
+      if (iframe) {
         iframe.src = ''
       }
     })

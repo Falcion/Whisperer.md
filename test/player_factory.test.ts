@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-undef */
 /* eslint-env browser, jest */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 import PlayerFactory from 'source/player/factory/player_factory'
 import Whisperer from 'source/main'
 

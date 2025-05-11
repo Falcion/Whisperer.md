@@ -24,20 +24,20 @@
  * Any code and/or API associated with OBSIDIAN behaves as stated in their distribution policy.
  */
 
-import { App, PluginSettingTab, Setting, TextAreaComponent } from 'obsidian'
+import { App, PluginSettingTab } from 'obsidian'
 import Whisperer from './main'
 import SettingsConstructor from './settings/settings_class'
 
 export default class WhispererSettingsTab extends PluginSettingTab {
   plugin: Whisperer
 
-  constructor(app: App, plugin: Whisperer) {
+  constructor (app: App, plugin: Whisperer) {
     super(app, plugin)
 
     this.plugin = plugin
   }
 
-  display(): void {
+  display (): void {
     const { containerEl } = this
 
     containerEl.empty()
