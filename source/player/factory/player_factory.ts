@@ -2,30 +2,36 @@ import Whisperer from './../../main'
 import { extractId, getEmbedUrl } from './../../utils/functions'
 
 export default class PlayerFactory {
-  public createPlayer (plugin: Whisperer, player: HTMLElement, type: string): void {
+  public plugin: Whisperer;
+
+  constructor(_plugin: Whisperer) {
+    this.plugin = _plugin;
+  }
+
+  public createPlayer(player: HTMLElement, type: string): void {
     switch (type) {
       case 'youtube':
       case 'yt':
       case 'ytube':
-        this.setupYouTubePlayer(plugin, player)
+        this.setupYouTubePlayer(player)
         break
       case 'sc':
       case 'scloud':
       case 'soundcloud':
-        this.setupSoundCloudPlayer(plugin, player)
+        this.setupSoundCloudPlayer(player)
         break
       case 'local':
       case 'audio':
       case 'fs':
-        this.setupLocalAudioPlayer(plugin, player)
+        this.setupLocalAudioPlayer(player)
         break
       default:
         throw new Error('Got an unknown type of player!')
     }
   }
 
-  private setupYouTubePlayer (plugin: Whisperer, player: HTMLElement): void {
-    const videoId = extractId(plugin.settings.vault_ambience_path)
+  private setupYouTubePlayer(player: HTMLElement): void {
+    const videoId = extractId(this.plugin.settings.vault_ambience_path)
     const iframe = document.createElement('iframe')
     iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&enablejsapi=1&playlist=${videoId}`
     iframe.width = '300'
@@ -35,7 +41,7 @@ export default class PlayerFactory {
 
     // Volume handled via postMessage to YouTube API
     iframe.onload = () => {
-      const volume = plugin.settings.music_volume ?? 50
+      const volume = this.plugin.settings.music_volume ?? 50
       iframe.contentWindow?.postMessage(
         JSON.stringify({
           event: 'command',
@@ -49,8 +55,8 @@ export default class PlayerFactory {
     player.appendChild(iframe)
   }
 
-  private setupSoundCloudPlayer (plugin: Whisperer, player: HTMLElement): void {
-    const embedUrl = getEmbedUrl(plugin.settings.vault_ambience_path)
+  private setupSoundCloudPlayer(player: HTMLElement): void {
+    const embedUrl = getEmbedUrl(this.plugin.settings.vault_ambience_path)
     // Add visual parameter to support API
     const apiEnabledUrl = `${embedUrl}&visual=true&show_artwork=false`
     const iframe = document.createElement('iframe')
@@ -64,17 +70,17 @@ export default class PlayerFactory {
     player.appendChild(iframe)
   }
 
-  private setupLocalAudioPlayer (plugin: Whisperer, player: HTMLElement): void {
+  private setupLocalAudioPlayer(player: HTMLElement): void {
     const audio = document.createElement('audio')
-    audio.src = plugin.app.vault.adapter.getResourcePath(plugin.settings.vault_ambience_path)
+    audio.src = this.plugin.app.vault.adapter.getResourcePath(this.plugin.settings.vault_ambience_path)
     audio.controls = true
     audio.autoplay = true
     audio.loop = true
-    audio.volume = (plugin.settings.music_volume ?? 50) / 100
+    audio.volume = (this.plugin.settings.music_volume ?? 50) / 100
     audio.addEventListener('volumechange', () => {
-      plugin.settings.music_volume = audio.volume * 100
-      plugin
-        .saveData(plugin.settings)
+      this.plugin.settings.music_volume = audio.volume * 100
+      this.plugin
+        .saveData(this.plugin.settings)
         .then()
         .catch((error) => {
           console.error(error)
