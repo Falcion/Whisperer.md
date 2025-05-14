@@ -9,6 +9,10 @@
     <a href="https://github.com/Falcion/Whisperer.md/issues"><img src="https://img.shields.io/github/issues/Falcion/Whisperer.md" alt="issues"/></a>
     <a href="https://github.com/Falcion/Whisperer.md/actions/workflows/analytics.yml"><img src="https://img.shields.io/github/actions/workflow/status/Falcion/Whisperer.md/.github%2Fworkflows%2Fbuild.yml" alt="build"></a>
     <a href="https://github.com/Falcion/Whisperer.md/commits"><img src="https://img.shields.io/github/last-commit/Falcion/Whisperer.md" alt="commit-activity"/></a>
+    <!-- SET UP STATUS FOR PROJECT AFTER RELEASE, FROM PRESETS AT:
+         ~/.github/badges-status-presets.json
+    -->
+    <a href="https://github.com/Falcion/Patternugit/releases/latest"><img src="https://img.shields.io/badge/status-maintenance-crimson" alt="commit-activity"/></a>
 </div>
 <!-- -->
 <br/>
@@ -65,6 +69,7 @@ Project is created and written with help of:
 ![JAVASCRIPT](https://img.shields.io/badge/-javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)\
 ![TYPESCRIPT](https://img.shields.io/badge/-typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)\
 ![OBSIDIAN](https://img.shields.io/badge/-OBSIDIAN-7C3AED?style=for-the-badge&logo=obsidian&logoColor=white)
+![PYTHON](https://img.shields.io/badge/-python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
 <!-- GETTING STARTED
  -->
@@ -119,6 +124,14 @@ Guidelines for direct-installation way:
 2. Disable restricted mode, and use "Community plugins → Browse" to find this plugin:
    type the name of the project or just write “any as note”;
 3. Use plugin, edit vault's ambience, set music to specified files accordingly.
+4. Download last tag on project's repository, for the last ZIP-tarball link provided
+   below:\
+    [download latest release](https://github.com/Falcion/Patternugit/releases/latest/)
+   - or just download the source-code through "Code → Download ZIP (or any option
+     that you want)", and proceed to the next step;
+5. Within downloaded ZIP (or project), clone everything and paste to the directory
+   of your project via "copy+paste" procedure;
+6. Now, you can use project just as if you installed it from other algorithms.
 
 Guidelines for installation of source code of this project:
 
@@ -167,10 +180,15 @@ More about plugin's functionality and how to use it, read at the wiki:\
 
 - [x] Adapt project's infrastructure (repository from template) for it's
   needs and requirements;
-- [ ] Write first version of project;
-- [ ] Publish it on OBSIDIAN's plugins registry;
+- [x] Write first version of project;
+- [x] Publish it on OBSIDIAN's plugins registry;
 - [ ] Write a wiki for the project;
 - [ ] Make more advanced controls over music in the vault and files;
+  - [x] Add ability to debug iframes;
+- [ ] Rewrite project to use native APIs of Youtube/Soundcloud/audio-element:
+  - [ ] Youtube's API Player;
+  - [ ] Soundcloud's API Player;
+  - [ ] Advanced local audio player (instead of simplificated audio-tag);
 
 <p align="right"><a href="#readme-top" title="Back to the top of README">[^]</a></p>
 
@@ -190,6 +208,7 @@ If you want to contribute to this project, please, read contributioning policy a
 commit convention, this repository works with CLA, commits convention and on automated
 deployment system[^4].
 
+> [!Important]
 > For one-single file contributioning, use a more quicker way without forking the
 > repository through site.
 
@@ -209,6 +228,7 @@ Project thanks the [Electron.js](https://github.com/electron/electron/) and
 [Angular](https://github.com/angular/angular/) for their amazing repository
 scripts and entire infrastructure, which partially were imported to this repository.
 
+> [!Note]
 > For individual licensing and credits information, seek correspondive files and/or
 > sources.
 

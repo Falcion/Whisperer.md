@@ -1,5 +1,6 @@
 For .GITATTRIBUTES generator use:
+- https://richienb.github.io/gitattributes-generator/
 
-- <https://richienb.github.io/gitattributes-generator/>
+Site (https://gitattributes.io/) is deprecated and unsupported.
 
-Site (<https://gitattributes.io/>) is deprecated and unsupported.
+Used (default) templates - markdown, web, common + SPECIALTY OF YOUR REPO.

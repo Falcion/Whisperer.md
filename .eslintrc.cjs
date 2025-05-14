@@ -32,6 +32,21 @@ module.exports = {
       excludedFiles: ['**/*.ts*', '**/*.*js*'],
       parser: 'eslint-plugin-markdownlint/parser',
       extends: ['plugin:markdownlint/recommended']
+    },
+    {
+      files: ['jest.setup.js', 'test/**/*.test.ts', '**/__tests__/**/*.[jt]s?(x)'],
+      env: {
+        jest: true,
+        browser: true
+      },
+      globals: {
+        HTMLMediaElement: 'readonly',
+        HTMLElement: 'readonly',
+        jest: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly'
+      }
     }
   ]
 }

@@ -3,7 +3,6 @@
   bottom: 10px;
   right: 10px;
   z-index: 1000;
-  display: none;
 }
 
 .file-ambience-player {
@@ -11,7 +10,6 @@
   bottom: 10px;
   right: 10px;
   z-index: 1000;
-  display: none;
 }
 
 .input-field {

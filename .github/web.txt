@@ -1,0 +1,133 @@
+# General
+Name: Patternugit
+Template Repository: True
+Require contributors to sign off on web-based commits: False
+Default branch:
+  - main
+Social preview:
+  - none
+## Danger zone (explicit)
+Visibility: Public
+Branch protection rules: True
+Archive: False
+## Features
+Wikis: True
+  - Restrict editing to collaborators only: True
+Issues: True
+Sponsorships: False
+Preserve this repository: True
+Discussions: True
+Projects: True
+## Pull Requests
+Allow merge commits: True
+  - Default commit message: Default message
+Allow squash merging: True
+  - Default commit message: Default message
+Allow rebase merging: True
+### Control how and when users are prompted to update their branches if there are new changes available in the base branch.
+Always suggest updating pull request branches: True
+### You can allow setting pull requests to merge automatically once all required reviews and status checks have passed.
+Allow auto-merge: True
+### After pull requests are merged, you can have head branches deleted automatically.
+Automatically delete head branches: True
+## Archives
+#** When creating source code archives, you can choose to include files stored using Git LFS in the archive.
+Include Git LFS objects in archives: True
+## Pushes
+Limit how many branches and tags can be updated in a single push: True
+Up to X branches and tags can be updated in a push: 5
+# Collaborators
+Access:
+  - none
+# Moderation options
+## Interaction limits
+Limit to existing users: Enable
+Limit to prior contributors: Enable
+Limit to repository collaborators: Enable
+## Code review limits
+Limit to users explicitly granted read or higher access: False
+# Branches
+protected_branches:
+    - main*
+    - development*
+# Tags
+# Rules
+rulesets:
+  - Auto-imported tag create protections
+  - Auto-imported tag delete protections
+  - main*
+# Actions
+## General
+Actions permissions:
+  - Allow all actions and reusable workflows
+Artifact and log retention: 30
+Approval for running fork pull request workflows from contributors: Require approval for first-time contributors
+Workflow permissions: Read and write permissions
+## Choose whether GitHub Actions can create pull requests or submit approving pull request reviews.
+Allow GitHub Actions to create and approve pull requests: True
+## Runners
+## Webhooks
+## Environments
+environments:
+######## if pages enabled:
+######## - github-pages
+  - development
+### Environment: development
+#### Deployment protection rules
+Required reviewers: False
+Wait timer: False
+Allow administrators to bypass configured protection rules: True
+#### Deployment branches and tags
+dev/* (branch)
+main (branch)
+v* (tag)
+release/* (branch)
+---
+Environment secrets: None
+Environment variables: None
+  - production
+### Environment: production
+#### Deployment protection rules
+Required reviewers: False
+Wait timer: False
+Allow administrators to bypass configured protection rules: True
+#### Deployment branches and tags
+---
+Environment secrets: None
+Environment variables: None
+## Codespaces
+## Pages
+# Security
+## Code security
+Private vulnerability reporting: Enabled
+Dependency graph: Enabled
+Automatic dependency submission: Enabled
+Dependabot alerts: Enabled
+Dependabot rules:
+  - Dismiss low-impact alerts for development-scoped dependencies: Enabled
+Dependabot security updates: Enabled
+Grouped security updates: Enabled
+Dependabot on Actions runners: Enabled
+## Code scanning
+Tools:
+  - CodeQL Advanced (Configured)
+Copilot Autofix: True
+Copilot Autofix for third-party tools: True
+Prevent direct alert dismissals: True
+Protection rules:
+  - Check runs failure threshold:
+    - Security alert severity level: High or higher
+    - Standard alert severity error: Only errors
+Secret scanning: Enabled
+Push protection: Enabled
+## Deploy keys
+## Secrets and variables
+### Actions
+### Codespaces
+### Dependabot
+# Integrations
+## GitHub Apps
+Apps:
+  - ImgBot
+  - Settings
+## Email notifications

@@ -14,3 +14,7 @@ root = true
 [*.py]
     indent_size = 4
     indent_style = space
+[*.sh]
+    end_of_line = lf
+[.husky/*-*]
+    end_of_line = lf
