@@ -27,15 +27,15 @@ export default class PlayerPerGlobal {
 
     if (isUrl(this.plugin.settings.vault_ambience_path)) {
       if (isAllowedHost(this.plugin.settings.vault_ambience_path, YT_HOSTS)) {
-        playerFactory.createPlayer(player, 'yt')
+        playerFactory.createPlayer(player as HTMLElement, 'yt')
       } else if (isAllowedHost(this.plugin.settings.vault_ambience_path, SC_HOSTS)) {
-        playerFactory.createPlayer(player, 'sc')
+        playerFactory.createPlayer(player as HTMLElement, 'sc')
       }
-      playerFactory.createPlayer(player, 'local')
+      playerFactory.createPlayer(player as HTMLElement, 'local')
     }
 
     container.appendChild(player)
 
-    this.plugin.players.push(player)
+    this.plugin.players.push(player as HTMLElement)
   }
 }
