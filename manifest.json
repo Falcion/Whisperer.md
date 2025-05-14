@@ -1,7 +1,7 @@
 {
   "id": "whisperer",
   "name": "WHISPERER.md",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minAppVersion": "1.0.0",
   "description": "Play ambience in your vault, assign audio to files through metadata with support of local (from vault) and URLs (Youtube, Soundcloud) versions of audio: works on mobile vaults.",
   "author": "Falcion",

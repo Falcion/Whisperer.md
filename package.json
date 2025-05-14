@@ -1,7 +1,7 @@
 {
   "name": "whisperer",
   "displayName": "Whisperer.md",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A plugin for note-taking app Obsidian which allows you to play ambience music in vault and assign different tracks to files specifically",
   "main": "index.js",
   "private": true,
