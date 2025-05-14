@@ -4,6 +4,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/mokkapps/changelog-generator-demo/compare/v1.1.0...v1.1.1) (2025-05-14)
+
+
+### Fixes
+
+* **players:** append local player, fix of [#23](https://github.com/Falcion/Whisperer.md/issues/23) and [#24](https://github.com/Falcion/Whisperer.md/issues/24) ([c643116](https://github.com/mokkapps/changelog-generator-demo/commits/c643116fa5df4fa9e63f3bca1b5c8baaa97f89df))
+
 ## [1.1.0](https://github.com/mokkapps/changelog-generator-demo/compare/v1.0.0...v1.1.0) (2025-05-14)
 
 

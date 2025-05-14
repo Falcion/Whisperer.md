@@ -54,7 +54,9 @@ export default class Whisperer extends Plugin {
 
     this.addSettingTab(new WhispererSettingsTab(this.app, this))
     this.registerEvent(
-      this.app.workspace.on('file-open', this.playerPerFile.handleFileOpen.bind(this))
+      this.app.workspace.on('file-open', async (file) => {
+        await this.playerPerFile.handleFileOpen(file)
+      })
     ) // Listen for file open
 
     const container = document.getElementsByClassName('obsidian-app')[0]
