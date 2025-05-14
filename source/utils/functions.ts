@@ -1,10 +1,12 @@
+import { YT_HOSTS } from './constants'
+
 export function isUrl (str: string): boolean {
   return /^(https?:\/\/)/.test(str)
 }
 
 export function getEmbedUrl (url: string): string {
-  if (url.includes('youtube.com') || url.includes('youtu.be')) {
-    const videoId = url.includes('youtu.be')
+  if (isAllowedHost(url, YT_HOSTS)) {
+    const videoId = isAllowedHost(url, ['youtu.be'])
       ? url.split('/').pop()
       : new URL(url).searchParams.get('v')
 
@@ -21,7 +23,7 @@ export function getEmbedUrl (url: string): string {
 export function extractId (url: string): string {
   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|.*v=))([\w-]{11})/)
 
-  return (match != null) ? match[1] : ''
+  return match != null ? match[1] : ''
 }
 
 /**

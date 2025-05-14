@@ -120,7 +120,7 @@ export default class PlayerPerFile {
       player.pause()
       // Handle IFrame for YouTube and SoundCloud
     } else if (player instanceof HTMLIFrameElement) {
-      if (player.src.includes('youtube.com') || player.src.includes('youtu.be')) {
+      if (isAllowedHost(player.src, YT_HOSTS)) {
         player.contentWindow?.postMessage(
           JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
           '*'
