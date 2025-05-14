@@ -25,7 +25,7 @@ export default class SettingsConstructor {
   }
 
   public get SETTING_AMBIENCE (): Setting {
-    if (this._SETTING_AMBIENCE == null) {
+    if (this._SETTING_AMBIENCE === undefined) {
       this._SETTING_AMBIENCE = new Setting(this.containerEl)
         .setName('Vault ambience:')
         .setDesc(
@@ -54,7 +54,7 @@ export default class SettingsConstructor {
   }
 
   public get SETTING_VAULT_PATH_TITLE (): Setting {
-    if (this._SETTING_VAULT_PATH_TITLE == null) {
+    if (this._SETTING_VAULT_PATH_TITLE === undefined) {
       this._SETTING_VAULT_PATH_TITLE = new Setting(this.containerEl)
         .setName("Path/URL to the audio of Vault's ambience (supports YouTube, SoundCloud):")
         .setDesc(
@@ -66,7 +66,7 @@ export default class SettingsConstructor {
   }
 
   public get SETTING_VAULT_PATH_INPUT (): TextAreaComponent {
-    if (this._SETTING_VAULT_PATH_INPUT == null) {
+    if (this._SETTING_VAULT_PATH_INPUT === undefined) {
       const result = new TextAreaComponent(this.containerEl)
         .setPlaceholder('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
         .setValue(this.plugin.settings.vault_ambience_path)
@@ -89,7 +89,7 @@ export default class SettingsConstructor {
   }
 
   public get SETTING_AMBIENCE_PER_FILE (): Setting {
-    if (this._SETTING_AMBIENCE_PER_FILE == null) {
+    if (this._SETTING_AMBIENCE_PER_FILE === undefined) {
       this._SETTING_AMBIENCE_PER_FILE = new Setting(this.containerEl)
         .setName('Ambience per files:')
         .setDesc(
@@ -113,7 +113,7 @@ export default class SettingsConstructor {
   }
 
   public get SETTING_AMBIENCE_PER_FILE_COMMENT (): Setting {
-    if (this._SETTING_AMBIENCE_PER_FILE_COMMENT == null) {
+    if (this._SETTING_AMBIENCE_PER_FILE_COMMENT === undefined) {
       this._SETTING_AMBIENCE_PER_FILE_COMMENT = new Setting(this.containerEl)
         .setName('')
         .setDesc(
@@ -125,7 +125,7 @@ export default class SettingsConstructor {
   }
 
   public get SETTING_MUSIC_VOLUME (): Setting {
-    if (this._SETTING_MUSICE_VOLUME == null) {
+    if (this._SETTING_MUSICE_VOLUME === undefined) {
       this._SETTING_MUSICE_VOLUME = new Setting(this.containerEl)
         .setName('Music volume')
         .setDesc(
@@ -154,7 +154,7 @@ export default class SettingsConstructor {
   }
 
   public get SETTING_DEBUG_FRAMES (): Setting {
-    if (this._SETTING_DEBUG_FRAMES == null) {
+    if (this._SETTING_DEBUG_FRAMES === undefined) {
       this._SETTING_DEBUG_FRAMES = new Setting(this.containerEl)
         .setName('Debug frames:')
         .setDesc(
@@ -175,21 +175,28 @@ export default class SettingsConstructor {
     return this._SETTING_DEBUG_FRAMES
   }
 
-  public static updateDisplays (elements: Array<Setting | TextAreaComponent>, values: boolean[]): void {
-    if (elements.length !== values.length) { throw new Error('Elements and their values both are out of range in some other ways.') }
+  public static updateDisplays (
+    elements: Array<Setting | TextAreaComponent>,
+    values: boolean[]
+  ): void {
+    if (elements.length !== values.length) {
+      throw new Error('Elements and their values both are out of range in some other ways.')
+    }
 
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i]
 
       if (element instanceof Setting) element.settingEl.style.display = values[i] ? 'block' : 'none'
-      if (element instanceof TextAreaComponent) { element.inputEl.style.display = values[i] ? 'block' : 'none' }
+      if (element instanceof TextAreaComponent) {
+        element.inputEl.style.display = values[i] ? 'block' : 'none'
+      }
     }
   }
 
   private _updateState (data: TextAreaComponent, prev: boolean, next: boolean): void {
     if (prev !== next) {
       if (prev) {
-        if (this.defaults == null) {
+        if (this.defaults === undefined) {
           this.defaults = {
             color: data.inputEl.style.color,
             borderColor: data.inputEl.style.borderColor,
@@ -200,7 +207,7 @@ export default class SettingsConstructor {
         data.inputEl.style.color = 'red'
         data.inputEl.style.borderColor = 'red'
         data.inputEl.style.borderWidth = '4px'
-      } else if (this.defaults != null) {
+      } else if (this.defaults !== undefined) {
         data.inputEl.style.color = this.defaults.color
         data.inputEl.style.borderColor = this.defaults.borderColor
         data.inputEl.style.borderWidth = this.defaults.borderWidth

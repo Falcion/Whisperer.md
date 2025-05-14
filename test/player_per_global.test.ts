@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-env browser, jest */
-import PlayerPerGlobal from 'source/player/player_per_global'
-import Whisperer from 'source/main'
+import PlayerPerGlobal from './../source/player/player_per_global'
+import Whisperer from './../source/main'
 
 describe('PlayerPerGlobal', () => {
     let plugin: Whisperer

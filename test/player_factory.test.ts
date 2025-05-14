@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-env browser, jest */
-import PlayerFactory from 'source/player/factory/player_factory'
-import Whisperer from 'source/main'
+import PlayerFactory from './../source/player/factory/player_factory'
+import Whisperer from './../source/main'
 
 describe('Factory › PlayerFactory', () => {
   let plugin: Whisperer, container: HTMLElement

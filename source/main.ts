@@ -30,6 +30,8 @@ import WhispererSettingsTab from './settings'
 import { WHISPERER_SETTINGS, DEFAULT_SETTINGS } from './settings/settings'
 import PlayerPerFile from './player/player_per_file'
 import PlayerPerGlobal from './player/player_per_global'
+import { isAllowedHost } from './utils/functions'
+import { SC_HOSTS, YT_HOSTS } from './utils/constants'
 
 export default class Whisperer extends Plugin {
   private _settings: WHISPERER_SETTINGS = DEFAULT_SETTINGS
@@ -107,11 +109,8 @@ export default class Whisperer extends Plugin {
         if (player.tagName === 'IFRAME') {
           const iframe = player as HTMLIFrameElement
 
-          // Handle YouTube player
           try {
-            const url = new URL(iframe.src)
-            const allowedYouTubeHosts = ['youtube.com', 'www.youtube.com', 'youtu.be']
-            if (allowedYouTubeHosts.includes(url.hostname)) {
+            if (isAllowedHost(iframe.src, YT_HOSTS)) {
               iframe.contentWindow?.postMessage(
                 JSON.stringify({
                   event: 'command',
@@ -125,11 +124,8 @@ export default class Whisperer extends Plugin {
             console.error('Invalid iframe src URL:', iframe.src, e)
           }
 
-          // Handle SoundCloud player
           try {
-            const url = new URL(iframe.src)
-            const allowedSoundCloudHosts = ['soundcloud.com', 'w.soundcloud.com']
-            if (allowedSoundCloudHosts.includes(url.hostname)) {
+            if (isAllowedHost(iframe.src, SC_HOSTS)) {
               // SoundCloud iframe API supports message listeners for certain features
               iframe.contentWindow?.postMessage(
                 JSON.stringify({

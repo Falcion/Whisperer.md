@@ -8,5 +8,6 @@ export default {
     '^source/(.*)$': '<rootDir>/source/$1'
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  extensionsToTreatAsEsm: ['.ts'] // if you need to treat .ts as ESM :contentReference[oaicite:3]{index=3}
+  extensionsToTreatAsEsm: ['.ts'], // if you need to treat .ts as ESM :contentReference[oaicite:3]{index=3},
+  testPathIgnorePatterns: ['<rootDir>/out/test']
 }

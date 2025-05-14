@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-env browser, jest */
-import WhispererSettingsTab from 'source/settings'
-import Whisperer from 'source/main'
+import WhispererSettingsTab from './../source/settings'
+import Whisperer from './../source/main'
 import { App } from 'obsidian'
 
 describe('Settings Tab', () => {

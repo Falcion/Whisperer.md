@@ -1,6 +1,7 @@
 import { TFile } from 'obsidian'
 import Whisperer from './../main'
-import { extractId, getEmbedUrl, isUrl } from './../utils/functions'
+import { extractId, getEmbedUrl, isAllowedHost, isEmptyString, isUrl } from './../utils/functions'
+import { SC_HOSTS, YT_HOSTS } from './../utils/constants'
 
 export default class PlayerPerFile {
   public plugin: Whisperer
@@ -24,8 +25,8 @@ export default class PlayerPerFile {
       this.pauseVaultAmbience()
 
       // Pause existing file-specific ambience
-      if (activeFile != null && activeFile !== '') {
-        this.pauseFileAmbience(activeFile)
+      if (!isEmptyString(activeFile)) {
+        this.pauseFileAmbience(activeFile ?? '')
       }
 
       // Set and play new file-specific ambience
@@ -33,12 +34,14 @@ export default class PlayerPerFile {
       this.playFileAmbience(musicPath, file.path)
     } else {
       // Pause existing file-specific ambience (only if a non-empty path is set)
-      if (activeFile != null && activeFile !== '') {
-        this.pauseFileAmbience(activeFile)
+      if (!isEmptyString(activeFile)) {
+        this.pauseFileAmbience(activeFile ?? '')
       }
 
       if (
-        document.getElementsByClassName('obsidian-app')[0].querySelector('.vault-ambience-player') == null
+        document
+          .getElementsByClassName('obsidian-app')[0]
+          .querySelector('.vault-ambience-player') == null
       ) {
         if (this.plugin.settings.vault_ambience) this.plugin.playerPerGlobal.playAmbience()
       }
@@ -54,7 +57,7 @@ export default class PlayerPerFile {
 
     if (isUrl(musicPath)) {
       // Handle YouTube or SoundCloud URLs
-      if (musicPath.includes('youtube.com') || musicPath.includes('youtu.be')) {
+      if (isAllowedHost(musicPath, YT_HOSTS)) {
         const videoId = extractId(musicPath)
         const iframe = document.createElement('iframe')
         iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}`
@@ -65,9 +68,7 @@ export default class PlayerPerFile {
         player.appendChild(iframe)
       } else {
         try {
-          const parsedUrl = new URL(musicPath)
-          const allowedHosts = ['soundcloud.com']
-          if (allowedHosts.includes(parsedUrl.host)) {
+          if (isAllowedHost(musicPath, SC_HOSTS)) {
             const embedUrl = getEmbedUrl(musicPath)
             const iframe = document.createElement('iframe')
             iframe.src = embedUrl
@@ -93,7 +94,7 @@ export default class PlayerPerFile {
 
       audio.addEventListener('timeupdate', () => {
         const playbackData = this.plugin.fileAmbiencePlayers.get(filePath)
-        if (playbackData != null) {
+        if (playbackData !== undefined) {
           playbackData.position = audio.currentTime
         }
       })
@@ -105,7 +106,10 @@ export default class PlayerPerFile {
 
   pauseFileAmbience (filePath: string): void {
     const playbackData = this.plugin.fileAmbiencePlayers.get(filePath)
-    if (playbackData == null) return
+
+    if (playbackData === undefined) return
+
+    if (isEmptyString(filePath)) throw new Error('Got empty file path, unexpected behavior.')
 
     const { player } = playbackData
 
@@ -123,9 +127,7 @@ export default class PlayerPerFile {
         )
       } else {
         try {
-          const parsedUrl = new URL(player.src)
-          const allowedHosts = ['soundcloud.com']
-          if (allowedHosts.includes(parsedUrl.host)) {
+          if (isAllowedHost(player.src, SC_HOSTS)) {
             player.contentWindow?.postMessage(JSON.stringify({ method: 'pause' }), '*')
           }
         } catch (e) {

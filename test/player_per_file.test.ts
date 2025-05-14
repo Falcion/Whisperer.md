@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-env browser, jest */
-import PlayerPerFile from 'source/player/player_per_file'
-import Whisperer from 'source/main'
+import PlayerPerFile from './../source/player/player_per_file'
+import Whisperer from './../source/main'
 import { TFile } from 'obsidian'
 
 describe('PlayerPerFile', () => {
