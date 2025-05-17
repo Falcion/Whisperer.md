@@ -1,1 +1,26 @@
-{}
+{
+  "1.0.0": {
+    "status": "skipped",
+    "type": "skipped"
+  },
+  "1.1.0": {
+    "status": "skipped",
+    "type": "skipped"
+  },
+  "1.1.1": {
+    "status": "skipped",
+    "type": "skipped"
+  },
+  "v1.0.0": {
+    "status": "unsupported",
+    "type": "beta"
+  },
+  "v1.1.0": {
+    "status": "unsupported",
+    "type": "stable"
+  },
+  "v1.1.1": {
+    "status": "supported",
+    "type": "stable"
+  }
+}
