@@ -31,6 +31,7 @@ export default class PlayerPerGlobal {
       } else if (isAllowedHost(this.plugin.settings.vault_ambience_path, SC_HOSTS)) {
         playerFactory.createPlayer(player as HTMLElement, 'sc')
       }
+    } else {
       playerFactory.createPlayer(player as HTMLElement, 'local')
     }
 
