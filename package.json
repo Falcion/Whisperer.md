@@ -188,7 +188,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.27.1",
-    "@changesets/cli": "^2.29.3",
+    "@changesets/cli": "^2.29.4",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@electron/lint-roller": "^3.0.0",
