@@ -241,7 +241,7 @@
     "lint": "^1.1.2",
     "lint-staged": "^16.0.0",
     "markdownlint": "^0.38.0",
-    "markdownlint-cli": "^0.44.0",
+    "markdownlint-cli": "^0.45.0",
     "markdownlint-cli2": "^0.18.1",
     "minimist": "^1.2.8",
     "mocha": "^11.2.2",
