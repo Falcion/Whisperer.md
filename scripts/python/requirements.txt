@@ -61,7 +61,7 @@ referencing==0.35.1
 requests==2.32.3
 rpds-py==0.21.0
 ruff==0.8.0
-setuptools==75.6.0
+setuptools==78.1.1
 six==1.16.0
 soupsieve==2.6
 stack-data==0.6.3
