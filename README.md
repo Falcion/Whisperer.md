@@ -20,14 +20,14 @@
 <div align="center">
     <picture align="center">
         <source
-        srcset="./.github/images/icon-dark-theme.svg"
+        srcset="https://github.com/Falcion/Whisperer.md/blob/main/.github/images/icon-dark-theme.svg"
         media="(prefers-color-scheme: dark)"
       />
       <source
-        srcset="./.github/images/icon-light-theme.svg"
+        srcset="https://github.com/Falcion/Whisperer.md/blob/main/.github/images/icon-light-theme.svg"
         media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
       />
-      <img src="./.github/images/icon-dark-theme.svg" />
+      <img src="https://github.com/Falcion/Whisperer.md/blob/main/.github/images/icon-dark-theme.svg" />
     </picture>
     <!-- TEXTS -->
     <h3>
