@@ -58,7 +58,7 @@ pywin32==308; platform_system == "Windows"
 PyYAML==6.0.2
 pyzmq==26.2.0
 referencing==0.35.1
-requests==2.32.3
+requests==2.32.4
 rpds-py==0.21.0
 ruff==0.8.0
 setuptools==78.1.1
