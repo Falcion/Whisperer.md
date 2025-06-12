@@ -7,17 +7,31 @@
 
 version: 2
 updates:
-  - package-ecosystem: 'npm'
+  # Maintain dependencies for NPM
+  - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: 'daily'
-    # Add assignees
-    assignees:
-      - 'octocat'
-  - package-ecosystem: 'github-actions'
+      interval: monthly
+      # A cronjob type schedule is required to use a cron interval.
+      # For cronjob setup, use:
+      # https://crontab.cronhub.io/
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
+    reviewers:
+      - 'Falcion'
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: github-actions
     directory: '/'
+    # A cronjob type schedule is required to use a cron interval.
+    # For cronjob setup, use:
+    # https://crontab.cronhub.io/
     schedule:
-      interval: 'daily'
-    # Add assignees
-    assignees:
-      - 'octocat'
+      interval: monthly
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'ci(deps)'
+      prefix-development: 'ci(deps-dev)'
+    reviewers:
+      - 'Falcion'
