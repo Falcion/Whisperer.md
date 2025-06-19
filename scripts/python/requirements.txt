@@ -71,7 +71,7 @@ tornado>=6.5.0
 traitlets==5.14.3
 types-PyYAML==6.0.12.20240917
 typing_extensions==4.12.2
-urllib3==2.2.3
+urllib3==2.5.0
 wcwidth==0.2.13
 webencodings==0.5.1
 wheel==0.45.1
