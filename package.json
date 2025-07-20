@@ -191,7 +191,7 @@
     "@changesets/cli": "^2.29.4",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@electron/lint-roller": "^3.0.0",
+    "@electron/lint-roller": "^3.1.2",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.28.0",
     "@jscpd/badge-reporter": "^4.0.1",
