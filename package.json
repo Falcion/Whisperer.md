@@ -221,7 +221,7 @@
     "esbuild-plugin-glsl": "^1.4.0",
     "esbuild-plugin-node-externals": "^1.0.1",
     "esbuild-sass-plugin": "^3.3.1",
-    "eslint": "^9.30.0",
+    "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin": "^1.0.1",
     "eslint-plugin-import": "^2.31.0",
