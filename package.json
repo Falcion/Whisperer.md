@@ -260,7 +260,7 @@
     "standard-version": "^9.5.0",
     "stylelint": "^16.19.1",
     "textlint": "^14.7.1",
-    "textlint-rule-date-weekday-mismatch": "^1.1.0",
+    "textlint-rule-date-weekday-mismatch": "^1.1.1",
     "textlint-rule-editorconfig": "^1.0.3",
     "textlint-rule-footnote-order": "^1.0.3",
     "textlint-rule-no-curly-quotes": "^1.0.0",
