@@ -215,7 +215,7 @@
     "dictionary-en": "^4.0.0",
     "dotenv": "^17.2.1",
     "dugite": "^2.7.1",
-    "editorconfig": "^2.0.1",
+    "editorconfig": "^3.0.1",
     "esbuild": "^0.25.4",
     "esbuild-plugin-glsl": "^1.4.0",
     "esbuild-plugin-node-externals": "^1.0.1",
