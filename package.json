@@ -202,7 +202,7 @@
     "@types/minimist": "^1.2.5",
     "@types/mocha": "^10.0.10",
     "@types/mock-fs": "^4.13.4",
-    "@types/node": "^24.0.8",
+    "@types/node": "^24.6.1",
     "@types/semver": "^7.7.0",
     "@types/sinon": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
