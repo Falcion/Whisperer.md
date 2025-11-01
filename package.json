@@ -193,7 +193,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.32.0",
     "@jscpd/badge-reporter": "^4.0.1",
-    "@npmcli/package-json": "^6.1.1",
+    "@npmcli/package-json": "^7.0.1",
     "@types/chai": "^5.2.2",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^30.0.0",
