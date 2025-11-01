@@ -237,7 +237,7 @@
     "jscpd": "^4.0.5",
     "jsdom": "^27.0.0",
     "lint": "^1.1.2",
-    "lint-staged": "^16.1.0",
+    "lint-staged": "^16.2.6",
     "markdownlint": "^0.38.0",
     "markdownlint-cli": "^0.45.0",
     "markdownlint-cli2": "^0.18.1",
