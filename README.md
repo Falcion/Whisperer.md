@@ -155,7 +155,7 @@ you want to hear in your vault's environment.
 
 > [!Tip]
 > Local audio files are defined by a relative path to the file itself
-> from Vault relative path (e.g., `./folder/audio.mp4`).
+> from Vault relative path (e.g., `./folder/audio.mp4`).\
 > This applies not only to global settings but also to paths as properties, i.e.,
 > any paths are specified relative to the root directory of your Vault.
 
