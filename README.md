@@ -122,7 +122,7 @@ Guidelines for direct-installation way:
 1. Go to your vault's settings, and go to "Settings → Community plugins" and go
    to the second step;
 2. Disable restricted mode, and use "Community plugins → Browse" to find this plugin:
-   type the name of the project or just write “any as note”;
+   type the name of the project or just write "any as note";
 3. Use plugin, edit vault's ambience, set music to specified files accordingly.
 4. Download last tag on project's repository, for the last ZIP-tarball link provided
    below:\
@@ -152,6 +152,12 @@ Usage of WHISPERER.md project is very intuitive thanks to the editor's design an
 predefined settings functionality, by default, vault's ambience functionality is
 turned on, but you need to assign which track (YouTube, SoundCloud or audio-file)
 you want to hear in your vault's environment.
+
+> [!Tip]
+> Local audio files are defined by a relative path to the file itself
+> from Vault relative path (e.g., `./folder/audio.mp4`).
+> This applies not only to global settings but also to paths as properties, i.e.,
+> any paths are specified relative to the root directory of your Vault.
 
 1. Go to your vault's settings and seek for "community plugins" sector, if you
    have restricted mode, repeat first and second steps of official installation guide[^2];
