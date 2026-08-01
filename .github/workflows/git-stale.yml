@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Mark stale issues and pull requests
-        uses: actions/stale@v10
+        uses: actions/stale@v11
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           stale-issue-message: |
